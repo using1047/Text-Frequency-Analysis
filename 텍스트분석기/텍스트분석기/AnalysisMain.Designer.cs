@@ -48,20 +48,21 @@ namespace 텍스트분석기
             this.tb_LinesCount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pn_RemoveWord = new System.Windows.Forms.Panel();
-            this.dgv_RemoveWordList = new System.Windows.Forms.DataGridView();
             this.pn_RemoveAddControl = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btn_SetSave = new System.Windows.Forms.Button();
+            this.btn_SetLoad = new System.Windows.Forms.Button();
             this.btn_AddWords = new System.Windows.Forms.Button();
             this.tb_RemoveWord = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.btn_SetLoad = new System.Windows.Forms.Button();
-            this.btn_SetSave = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.dgv_RemoveWordList = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_AnalysisResult)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pn_RemoveWord.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_RemoveWordList)).BeginInit();
             this.pn_RemoveAddControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_RemoveWordList)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -76,7 +77,7 @@ namespace 텍스트분석기
             // lbl_TextFilePath
             // 
             this.lbl_TextFilePath.AutoSize = true;
-            this.lbl_TextFilePath.Location = new System.Drawing.Point(95, 19);
+            this.lbl_TextFilePath.Location = new System.Drawing.Point(92, 19);
             this.lbl_TextFilePath.Name = "lbl_TextFilePath";
             this.lbl_TextFilePath.Size = new System.Drawing.Size(40, 15);
             this.lbl_TextFilePath.TabIndex = 1;
@@ -86,7 +87,7 @@ namespace 텍스트분석기
             // 
             this.btn_Load.Location = new System.Drawing.Point(371, 10);
             this.btn_Load.Name = "btn_Load";
-            this.btn_Load.Size = new System.Drawing.Size(75, 32);
+            this.btn_Load.Size = new System.Drawing.Size(91, 32);
             this.btn_Load.TabIndex = 2;
             this.btn_Load.Text = "Find..";
             this.btn_Load.UseVisualStyleBackColor = true;
@@ -99,7 +100,7 @@ namespace 텍스트분석기
             this.dgv_AnalysisResult.Name = "dgv_AnalysisResult";
             this.dgv_AnalysisResult.RowHeadersWidth = 51;
             this.dgv_AnalysisResult.RowTemplate.Height = 27;
-            this.dgv_AnalysisResult.Size = new System.Drawing.Size(434, 355);
+            this.dgv_AnalysisResult.Size = new System.Drawing.Size(447, 355);
             this.dgv_AnalysisResult.TabIndex = 3;
             this.dgv_AnalysisResult.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgv_AnalysisResult_SortCompare);
             // 
@@ -109,17 +110,17 @@ namespace 텍스트분석기
             this.btn_StartAnalysis.Name = "btn_StartAnalysis";
             this.btn_StartAnalysis.Size = new System.Drawing.Size(263, 58);
             this.btn_StartAnalysis.TabIndex = 4;
-            this.btn_StartAnalysis.Text = "Start Analysis";
+            this.btn_StartAnalysis.Text = "Start Frequency Analysis";
             this.btn_StartAnalysis.UseVisualStyleBackColor = true;
             this.btn_StartAnalysis.Click += new System.EventHandler(this.btn_StartAnalysis_Click);
             // 
             // btn_Export
             // 
-            this.btn_Export.Location = new System.Drawing.Point(589, 3);
+            this.btn_Export.Location = new System.Drawing.Point(544, 3);
             this.btn_Export.Name = "btn_Export";
-            this.btn_Export.Size = new System.Drawing.Size(142, 34);
+            this.btn_Export.Size = new System.Drawing.Size(187, 34);
             this.btn_Export.TabIndex = 5;
-            this.btn_Export.Text = "DataGird Export..";
+            this.btn_Export.Text = "DataGird Export...";
             this.btn_Export.UseVisualStyleBackColor = true;
             this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
             // 
@@ -127,9 +128,9 @@ namespace 텍스트분석기
             // 
             this.btn_Import.Location = new System.Drawing.Point(12, 3);
             this.btn_Import.Name = "btn_Import";
-            this.btn_Import.Size = new System.Drawing.Size(142, 34);
+            this.btn_Import.Size = new System.Drawing.Size(187, 34);
             this.btn_Import.TabIndex = 6;
-            this.btn_Import.Text = "DataGird Import..";
+            this.btn_Import.Text = "DataGird Import...";
             this.btn_Import.UseVisualStyleBackColor = true;
             // 
             // panel1
@@ -173,9 +174,11 @@ namespace 텍스트분석기
             // 
             // tb_WordNumber
             // 
-            this.tb_WordNumber.Location = new System.Drawing.Point(83, 110);
+            this.tb_WordNumber.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.tb_WordNumber.ForeColor = System.Drawing.Color.Transparent;
+            this.tb_WordNumber.Location = new System.Drawing.Point(211, 112);
             this.tb_WordNumber.Name = "tb_WordNumber";
-            this.tb_WordNumber.Size = new System.Drawing.Size(648, 25);
+            this.tb_WordNumber.Size = new System.Drawing.Size(520, 25);
             this.tb_WordNumber.TabIndex = 15;
             this.tb_WordNumber.Text = "0";
             this.tb_WordNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -184,12 +187,13 @@ namespace 텍스트분석기
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.label5.Location = new System.Drawing.Point(11, 116);
             this.label5.Margin = new System.Windows.Forms.Padding(100, 0, 100, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 19);
+            this.label5.Size = new System.Drawing.Size(188, 19);
             this.label5.TabIndex = 14;
-            this.label5.Text = "NWord :";
+            this.label5.Text = "Searching for word.. :";
             // 
             // label4
             // 
@@ -213,7 +217,7 @@ namespace 텍스트분석기
             // 
             this.tb_WordsCount.Location = new System.Drawing.Point(83, 40);
             this.tb_WordsCount.Name = "tb_WordsCount";
-            this.tb_WordsCount.Size = new System.Drawing.Size(363, 25);
+            this.tb_WordsCount.Size = new System.Drawing.Size(379, 25);
             this.tb_WordsCount.TabIndex = 11;
             this.tb_WordsCount.Text = "0";
             this.tb_WordsCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -233,7 +237,7 @@ namespace 텍스트분석기
             // 
             this.tb_LinesCount.Location = new System.Drawing.Point(83, 9);
             this.tb_LinesCount.Name = "tb_LinesCount";
-            this.tb_LinesCount.Size = new System.Drawing.Size(363, 25);
+            this.tb_LinesCount.Size = new System.Drawing.Size(379, 25);
             this.tb_LinesCount.TabIndex = 9;
             this.tb_LinesCount.Text = "0 / 0";
             this.tb_LinesCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -251,6 +255,7 @@ namespace 텍스트분석기
             // 
             // pn_RemoveWord
             // 
+            this.pn_RemoveWord.Controls.Add(this.label8);
             this.pn_RemoveWord.Controls.Add(this.pn_RemoveAddControl);
             this.pn_RemoveWord.Controls.Add(this.dgv_RemoveWordList);
             this.pn_RemoveWord.Dock = System.Windows.Forms.DockStyle.Right;
@@ -258,16 +263,6 @@ namespace 텍스트분석기
             this.pn_RemoveWord.Name = "pn_RemoveWord";
             this.pn_RemoveWord.Size = new System.Drawing.Size(275, 409);
             this.pn_RemoveWord.TabIndex = 10;
-            // 
-            // dgv_RemoveWordList
-            // 
-            this.dgv_RemoveWordList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_RemoveWordList.Location = new System.Drawing.Point(6, 139);
-            this.dgv_RemoveWordList.Name = "dgv_RemoveWordList";
-            this.dgv_RemoveWordList.RowHeadersWidth = 51;
-            this.dgv_RemoveWordList.RowTemplate.Height = 27;
-            this.dgv_RemoveWordList.Size = new System.Drawing.Size(257, 264);
-            this.dgv_RemoveWordList.TabIndex = 3;
             // 
             // pn_RemoveAddControl
             // 
@@ -282,6 +277,35 @@ namespace 텍스트분석기
             this.pn_RemoveAddControl.Name = "pn_RemoveAddControl";
             this.pn_RemoveAddControl.Size = new System.Drawing.Size(275, 133);
             this.pn_RemoveAddControl.TabIndex = 4;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 89);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 15);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Words Setting";
+            // 
+            // btn_SetSave
+            // 
+            this.btn_SetSave.Location = new System.Drawing.Point(147, 107);
+            this.btn_SetSave.Name = "btn_SetSave";
+            this.btn_SetSave.Size = new System.Drawing.Size(120, 23);
+            this.btn_SetSave.TabIndex = 7;
+            this.btn_SetSave.Text = "Save..";
+            this.btn_SetSave.UseVisualStyleBackColor = true;
+            this.btn_SetSave.Click += new System.EventHandler(this.btn_SetSave_Click);
+            // 
+            // btn_SetLoad
+            // 
+            this.btn_SetLoad.Location = new System.Drawing.Point(10, 107);
+            this.btn_SetLoad.Name = "btn_SetLoad";
+            this.btn_SetLoad.Size = new System.Drawing.Size(120, 23);
+            this.btn_SetLoad.TabIndex = 6;
+            this.btn_SetLoad.Text = "Load..";
+            this.btn_SetLoad.UseVisualStyleBackColor = true;
+            this.btn_SetLoad.Click += new System.EventHandler(this.btn_SetLoad_Click);
             // 
             // btn_AddWords
             // 
@@ -309,34 +333,24 @@ namespace 텍스트분석기
             this.label6.TabIndex = 3;
             this.label6.Text = "Remove Word";
             // 
-            // btn_SetLoad
+            // dgv_RemoveWordList
             // 
-            this.btn_SetLoad.Location = new System.Drawing.Point(10, 107);
-            this.btn_SetLoad.Name = "btn_SetLoad";
-            this.btn_SetLoad.Size = new System.Drawing.Size(120, 23);
-            this.btn_SetLoad.TabIndex = 6;
-            this.btn_SetLoad.Text = "Load..";
-            this.btn_SetLoad.UseVisualStyleBackColor = true;
-            this.btn_SetLoad.Click += new System.EventHandler(this.btn_SetLoad_Click);
+            this.dgv_RemoveWordList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_RemoveWordList.Location = new System.Drawing.Point(6, 154);
+            this.dgv_RemoveWordList.Name = "dgv_RemoveWordList";
+            this.dgv_RemoveWordList.RowHeadersWidth = 51;
+            this.dgv_RemoveWordList.RowTemplate.Height = 27;
+            this.dgv_RemoveWordList.Size = new System.Drawing.Size(257, 249);
+            this.dgv_RemoveWordList.TabIndex = 3;
             // 
-            // btn_SetSave
+            // label8
             // 
-            this.btn_SetSave.Location = new System.Drawing.Point(147, 107);
-            this.btn_SetSave.Name = "btn_SetSave";
-            this.btn_SetSave.Size = new System.Drawing.Size(120, 23);
-            this.btn_SetSave.TabIndex = 7;
-            this.btn_SetSave.Text = "Save..";
-            this.btn_SetSave.UseVisualStyleBackColor = true;
-            this.btn_SetSave.Click += new System.EventHandler(this.btn_SetSave_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 89);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 15);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Words Setting";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 136);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(150, 15);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Words to be removed";
             // 
             // AnalysisForm
             // 
@@ -357,9 +371,10 @@ namespace 텍스트분석기
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.pn_RemoveWord.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_RemoveWordList)).EndInit();
+            this.pn_RemoveWord.PerformLayout();
             this.pn_RemoveAddControl.ResumeLayout(false);
             this.pn_RemoveAddControl.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_RemoveWordList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,6 +409,7 @@ namespace 텍스트분석기
         private System.Windows.Forms.Button btn_SetSave;
         private System.Windows.Forms.Button btn_SetLoad;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
     }
 }
 

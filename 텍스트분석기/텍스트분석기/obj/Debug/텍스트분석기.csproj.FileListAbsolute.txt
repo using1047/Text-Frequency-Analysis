@@ -8,3 +8,13 @@ C:\Users\82105\source\repos\텍스트분석기\텍스트분석기\obj\Debug\텍�
 C:\Users\82105\source\repos\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.csproj.CoreCompileInputs.cache
 C:\Users\82105\source\repos\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.exe
 C:\Users\82105\source\repos\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.pdb
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\텍스트분석기.exe.config
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\텍스트분석기.exe
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\텍스트분석기.pdb
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.csprojAssemblyReference.cache
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.AnalysisForm.resources
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.Properties.Resources.resources
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.csproj.GenerateResource.cache
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.csproj.CoreCompileInputs.cache
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.exe
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.pdb
