@@ -83,6 +83,7 @@ namespace 텍스트분석기
         /// <param name="e"></param>
         private void btn_StartAnalysis_Click(object sender, EventArgs e)
         {
+            dgv_AnalysisResult.Rows.Clear();
             if (OriginalFilePath != "")
             {
                 pn_RemoveAddControl.Enabled = false;
@@ -96,6 +97,7 @@ namespace 텍스트분석기
             pn_RemoveAddControl.Enabled = true;
             OriginalFilePath = "";
             lbl_TextFilePath.Text = "";
+            pb_Update.Value = 0;
         }
 
         /// <summary>
@@ -212,15 +214,18 @@ namespace 텍스트분석기
         }
 
         /// <summary>
-        /// DataGridView 숫자 정렬
+        /// DataGridView 숫자 정렬을 위해 추가
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void dgv_AnalysisResult_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
         {
-            int a = int.Parse(e.CellValue1.ToString()), b = int.Parse(e.CellValue2.ToString());
-            e.SortResult = a.CompareTo(b);
-            e.Handled = true;
+            if (e.Column.Name.Equals("Count"))
+            {
+                int a = int.Parse(e.CellValue1.ToString()), b = int.Parse(e.CellValue2.ToString());
+                e.SortResult = a.CompareTo(b);
+                e.Handled = true;
+            }
         }
 
         /// <summary>
@@ -249,7 +254,7 @@ namespace 텍스트분석기
         }
 
         /// <summary>
-        /// 작업
+        /// 분석 작업
         /// </summary>
         void ThreadNRead()
         {
@@ -273,14 +278,13 @@ namespace 텍스트분석기
                     while (!sr.EndOfStream)
                     {
                         string StrLine = sr.ReadLine();
-
                         StrLine = RemoveStrInWords(StrLine);
 
                         string[] StrWords = StrLine.Split(' ');
 
                         NLine++;
 
-                        // 비어있으면 진행 안함
+                        // 단어가 1개 이상일 때 실행
                         if (StrWords.Length > 0)
                         {
                             // 단어 개수만큼
@@ -296,7 +300,6 @@ namespace 텍스트분석기
 
                                 // 현재 라인 번호 / 전체 라인 개 수
                                 string Status = (NLine.ToString() + " / " + ALine.ToString());
-
                                 tb_LinesCount.Text = Status;
                                 
                                 // Pause인지 확인하는 구문
@@ -309,7 +312,7 @@ namespace 텍스트분석기
                             }
                         }
 
-                        // 10000번째 줄 마다 필요없는 단어 없애기
+                        // 10000번째 줄 마다 5개 미만인 단어 없애기
                         if (NLine % 10000 == 0 && NLine != 0)
                         {
                             List<string> TempDic = new List<string>();
@@ -323,47 +326,29 @@ namespace 텍스트분석기
                                 AllText.Remove(Dictionary);
                             }
                         }
-                        // 1000번째 줄 마다 단어 확인
+
+                        // 1000번째 줄 마다 업데이트
                         else if (NLine % 1000 == 0 && NLine != 0)
                         {
                             pb_Update.Value = 0;
-
                             tb_WordNumber.Visible = true;
-                            // 삽입 구문
-                            for (int Row = 0; Row < AllText.Count; Row++)
-                            {
+                            dgv_AnalysisResult.Rows.Clear();
+                            
+                            int CurrentNumber = 1;
 
-                                tb_WordNumber.Text = Row.ToString();
+                            var queryDesc= AllText.OrderByDescending(x => x.Value);
+
+                            // 업데이트 구문
+                            foreach (var Text in queryDesc)
+                            {
+                                tb_WordNumber.Text = CurrentNumber.ToString();
                                 Application.DoEvents();
 
-                                if (AllText.ElementAt(Row).Value > 100)
+                                if(Text.Value > 100)
                                 {
-                                    bool Check = false;
-                                    foreach (DataGridViewRow row in dgv_AnalysisResult.Rows)
-                                    {
-                                        if (row.Cells[0].Value != null)
-                                        {
-                                            if (row.Cells[0].Value.ToString() == AllText.ElementAt(Row).Key.ToString())
-                                            {
-                                                row.Cells[1].Value = AllText.ElementAt(Row).Value.ToString();
-                                                Check = true;
-                                                break;
-                                            }
-                                        }
-                                        Application.DoEvents();
-                                    }
-
-                                    if (Check == false)
-                                    {
-                                        dgv_AnalysisResult.Rows.Add(AllText.ElementAt(Row).Key, AllText.ElementAt(Row).Value.ToString());
-                                    }
-
-                                    while (Pause)
-                                    {
-                                        PauseEvent.WaitOne();
-                                        Application.DoEvents();
-                                    }
+                                    dgv_AnalysisResult.Rows.Add(Text.Key, Text.Value);
                                 }
+                                CurrentNumber++;
                             }
                             tb_WordNumber.Visible = false;
                         }
@@ -372,7 +357,6 @@ namespace 텍스트분석기
                         {
                             pb_Update.Value = NLine % 1000 / 10;
                         }
-                        else { }
                     }
                 }
 
@@ -385,7 +369,7 @@ namespace 텍스트분석기
         }
 
         /// <summary>
-        /// 단어 제거한 문장 되돌려주기
+        /// 문장에서 삭제 단어들 지우기
         /// </summary>
         /// <param name="Line"></param>
         /// <returns></returns>
