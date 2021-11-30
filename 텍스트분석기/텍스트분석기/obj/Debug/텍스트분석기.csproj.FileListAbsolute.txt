@@ -18,3 +18,13 @@ D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\ob
 D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.csproj.CoreCompileInputs.cache
 D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.exe
 D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.pdb
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Buffers.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Memory.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Numerics.Vectors.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\UMAP.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Buffers.xml
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Memory.xml
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Numerics.Vectors.xml
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.csproj.CopyComplete

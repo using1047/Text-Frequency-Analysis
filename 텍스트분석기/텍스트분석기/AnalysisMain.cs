@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UMAP;
 
 namespace 텍스트분석기
 {
@@ -16,7 +17,7 @@ namespace 텍스트분석기
     {
         string OriginalFilePath = "";
 
-        Dictionary<string, int> AllText = new Dictionary<string, int>();
+        SortedList<string, int> AllText = new SortedList<string, int>();
 
         bool Pause = false;
         ManualResetEvent PauseEvent = new ManualResetEvent(true);
@@ -31,6 +32,7 @@ namespace 텍스트분석기
             tb_LinesCount.Enabled = false;
             tb_WordsCount.Enabled = false;
             tb_WordNumber.Visible = false;
+            lbl_SearchText.Visible = false;
 
             btn_Pause.Visible = false;
             btn_Export.Visible = false;
@@ -46,6 +48,8 @@ namespace 텍스트분석기
 
             dgv_RemoveWordList.Columns["Word"].Width = dgv_RemoveWordList.Width / 2 - 10;
             dgv_RemoveWordList.Columns["Deleted"].Width = dgv_RemoveWordList.Width / 2 - 42;
+
+            btn_Pause.Left = (pn_Bottom1.Width - btn_Pause.Width)/ 2;
         }
 
         /// <summary>
@@ -56,18 +60,18 @@ namespace 텍스트분석기
         /// <param name="e"></param>
         private void btn_Load_Click(object sender, EventArgs e)
         {
-            using(OpenFileDialog ofd = new OpenFileDialog())
+            using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Filter = ".txt | *txt";
 
-                if(ofd.ShowDialog() == DialogResult.OK)
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     string[] path = ofd.FileName.Split('\\');
                     lbl_TextFilePath.Text = path.Last();
 
                     OriginalFilePath = ofd.FileName;
 
-                    if(OriginalFilePath == null)
+                    if (OriginalFilePath == null)
                     {
                         MessageBox.Show("파일을 불러올 수 없었습니다.", "실패");
                         OriginalFilePath = "";
@@ -98,6 +102,14 @@ namespace 텍스트분석기
             OriginalFilePath = "";
             lbl_TextFilePath.Text = "";
             pb_Update.Value = 0;
+
+            dgv_AnalysisResult.Rows.Clear();
+            foreach (var Text in AllText)
+            {
+                dgv_AnalysisResult.Rows.Add(Text.Key, Text.Value);
+            }
+
+            Application.DoEvents();
         }
 
         /// <summary>
@@ -114,18 +126,15 @@ namespace 텍스트분석기
             sfd.Filter = "텍스트 문서(*.txt)|*.txt|모든 파일|*.*";
             sfd.DefaultExt = "txt";
             sfd.AddExtension = true;
-            
-            if(sfd.ShowDialog() == DialogResult.OK)
+
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
                 FileStream fileStream = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write);
                 StreamWriter sw = new StreamWriter(fileStream);
 
-                for (int Row = 0; Row < dgv_AnalysisResult.Rows.Count; Row++)
+                foreach (var Text in AllText)
                 {
-                    if (dgv_AnalysisResult.Rows[Row].Cells[0] != null)
-                    {
-                        sw.WriteLine("단어 : " + dgv_AnalysisResult.Rows[Row].Cells[0].Value + " 빈도 : " + dgv_AnalysisResult.Rows[Row].Cells[1].Value);
-                    }
+                    sw.WriteLine(Text.Key + "\t" + Text.Value);
                 }
 
                 sw.Close();
@@ -206,7 +215,7 @@ namespace 텍스트분석기
                         while (!sr.EndOfStream)
                         {
                             string Word = sr.ReadLine();
-                            if(Word != "") dgv_RemoveWordList.Rows.Add(Word, false.ToString());
+                            if (Word != "") dgv_RemoveWordList.Rows.Add(Word, false.ToString());
                         }
                     }
                 }
@@ -294,14 +303,14 @@ namespace 텍스트분석기
                                 if (AllText.ContainsKey(StrWords[num])) AllText[StrWords[num]]++;
                                 else
                                 {
-                                    if(StrWords[num] != "") AllText.Add(StrWords[num], 1);
+                                    if (StrWords[num] != "") AllText.Add(StrWords[num], 1);
                                 }
                                 tb_WordsCount.Text = AllText.Count.ToString();
 
                                 // 현재 라인 번호 / 전체 라인 개 수
                                 string Status = (NLine.ToString() + " / " + ALine.ToString());
                                 tb_LinesCount.Text = Status;
-                                
+
                                 // Pause인지 확인하는 구문
                                 while (Pause)
                                 {
@@ -315,15 +324,18 @@ namespace 텍스트분석기
                         // 10000번째 줄 마다 5개 미만인 단어 없애기
                         if (NLine % 10000 == 0 && NLine != 0)
                         {
-                            List<string> TempDic = new List<string>();
-                            // 개 수가 5 미만인 경우 없애기
-                            foreach (var Dictionary in AllText)
+                            if (cb_Delete.Checked)
                             {
-                                if (Dictionary.Value < 5) TempDic.Add(Dictionary.Key);
-                            }
-                            foreach(var Dictionary in TempDic)
-                            {
-                                AllText.Remove(Dictionary);
+                                List<string> TempDic = new List<string>();
+                                // 개 수가 5 미만인 경우 없애기
+                                foreach (var Dictionary in AllText)
+                                {
+                                    if (Dictionary.Value < 5) TempDic.Add(Dictionary.Key);
+                                }
+                                foreach (var Dictionary in TempDic)
+                                {
+                                    AllText.Remove(Dictionary);
+                                }
                             }
                         }
 
@@ -332,31 +344,35 @@ namespace 텍스트분석기
                         {
                             pb_Update.Value = 0;
                             tb_WordNumber.Visible = true;
+                            lbl_SearchText.Visible = true;
                             dgv_AnalysisResult.Rows.Clear();
-                            
+
                             int CurrentNumber = 1;
 
-                            var queryDesc= AllText.OrderByDescending(x => x.Value);
 
                             // 업데이트 구문
-                            foreach (var Text in queryDesc)
+                            foreach (var Text in AllText)
                             {
                                 tb_WordNumber.Text = CurrentNumber.ToString();
                                 Application.DoEvents();
-
-                                if(Text.Value > 100)
+                                if (Text.Value > 100)
                                 {
                                     dgv_AnalysisResult.Rows.Add(Text.Key, Text.Value);
                                 }
                                 CurrentNumber++;
                             }
+                            dgv_AnalysisResult.Sort(new RowComparer(SortOrder.Descending));
+
                             tb_WordNumber.Visible = false;
+                            lbl_SearchText.Visible = false;
                         }
+
                         // 그 외에는 프로그래스 바 진행도 올리기
                         else if (NLine % 100 == 0 && NLine != 0)
                         {
                             pb_Update.Value = NLine % 1000 / 10;
                         }
+
                     }
                 }
 
@@ -390,7 +406,7 @@ namespace 텍스트분석기
 
                     if (Row.Cells[1].Value != null)
                     {
-                        if(Row.Cells[1].Value.ToString() != true.ToString()) Row.Cells[1].Value = true.ToString();
+                        if (Row.Cells[1].Value.ToString() != true.ToString()) Row.Cells[1].Value = true.ToString();
                     }
                 }
 
@@ -398,5 +414,156 @@ namespace 텍스트분석기
             }
             else return "";
         }
+
+        /// <summary>
+        /// 폼 크기 변경 시
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AnalysisForm_Resize(object sender, EventArgs e)
+        {
+            Ctl_PausePostionChange();
+        }
+
+        /// <summary>
+        /// Pause 버튼 위치 수정
+        /// </summary>
+        void Ctl_PausePostionChange()
+        {
+            btn_Pause.Left = (pn_Bottom1.Width - btn_Pause.Width) / 2;
+            this.Refresh();
+        }
+
+        // 전체 문장 목록
+        List<string> Sentences = new List<string>();
+        // 전체 단어 One-Hot Encoding
+        Dictionary<string, int> WordsList = new Dictionary<string, int>();
+        private void btn_LoadNewText_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "*텍스트 문서|*.txt";
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamReader sr = new StreamReader(ofd.FileName))
+                    {
+                        int KeyNValue = 0;
+                        while (!sr.EndOfStream)
+                        {
+                            string Text = sr.ReadLine();
+
+                            Text = Text.Replace(".", "");
+                            Text = Text.Replace(",", "");
+                            Text = Text.Replace("?", "");
+                            Text = Text.Replace("\'", "");
+
+                            Sentences.Add(Text);
+                            string[] Words = Text.Split(' ');
+
+                            foreach (var Word in Words)
+                            {
+                                if (!WordsList.ContainsKey(Word) && Word != null && Word != "")
+                                {
+                                    WordsList.Add(Word, KeyNValue);
+                                    KeyNValue++;
+                                }
+                            }
+                        }
+                    }
+                    lbl_AllWordsCount.Text = "전체 단어 수 : " + WordsList.Count.ToString();
+                    lbl_AllSentencesCount.Text = "전체 문장 수 : " + Sentences.Count;
+                }
+            }
+        }
+
+        private void btn_SaveData_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "TSV 파일|*.tsv";
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    using (StreamWriter sw = new StreamWriter(sfd.FileName))
+                    {
+                        sw.Write("W/S\t");
+
+                        foreach (var Sentence in Sentences)
+                        {
+                            sw.Write(Sentence + "\t");
+                        }
+                        sw.WriteLine();
+
+                        for (int CurrentSentence = 0; CurrentSentence < Sentences.Count; CurrentSentence++)
+                        {
+                            // 분리할 문장
+                            string[] Words = Sentences[CurrentSentence].Split(' ');
+
+                            foreach (var Word in Words)
+                            {
+                                sw.Write(Word + "\t");
+
+                                // 사이즈 맞춰주기
+                                for (int Cur = 0; Cur < Sentences.Count; Cur++)
+                                {
+                                    if (Sentences[Cur].Contains(Word))
+                                    {
+                                        var KeyValue = WordsList[Word] + 1;
+                                        var Value = (double)1 / KeyValue;
+                                        sw.Write(Value + "\t");
+                                    }
+                                    else
+                                    {
+                                        sw.Write("0\t");
+                                    }
+                                }
+                                sw.WriteLine();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// 정렬
+    /// </summary>
+    class RowComparer : System.Collections.IComparer
+    {
+        private static int sortOrderModifier = 1;
+
+        public RowComparer(SortOrder sortOrder)
+        {
+            if (sortOrder == SortOrder.Descending)
+            {
+                sortOrderModifier = -1;
+            }
+            else if (sortOrder == SortOrder.Ascending)
+            {
+                sortOrderModifier = 1;
+            }
+        }
+
+        public int Compare(object x, object y)
+        {
+            DataGridViewRow DataGridViewRow1 = (DataGridViewRow)x;
+            DataGridViewRow DataGridViewRow2 = (DataGridViewRow)y;
+
+            // Try to sort based on the Last Name column.
+            int CompareResult = System.String.Compare(
+                DataGridViewRow1.Cells[1].Value.ToString(),
+                DataGridViewRow2.Cells[1].Value.ToString());
+
+            // If the Last Names are equal, sort based on the First Name.
+            if (CompareResult == 0)
+            {
+                CompareResult = System.String.Compare(
+                    DataGridViewRow1.Cells[0].Value.ToString(),
+                    DataGridViewRow2.Cells[0].Value.ToString());
+            }
+            return CompareResult * sortOrderModifier;
+        }
     }
 }
+
+
