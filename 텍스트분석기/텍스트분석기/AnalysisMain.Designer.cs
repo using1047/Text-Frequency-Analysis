@@ -1,5 +1,4 @@
-﻿
-namespace 텍스트분석기
+﻿namespace 텍스트분석기
 {
     partial class AnalysisForm
     {
@@ -73,9 +72,17 @@ namespace 텍스트분석기
             this.label1 = new System.Windows.Forms.Label();
             this.tp_2 = new System.Windows.Forms.TabPage();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.gb_OuterPB = new System.Windows.Forms.GroupBox();
+            this.pn_OuterPB = new System.Windows.Forms.Panel();
             this.pb_UMAPImage = new System.Windows.Forms.PictureBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gb_Information = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nud_WordsCount = new System.Windows.Forms.NumericUpDown();
+            this.btn_OnlyImage = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbl_ReadingStatus = new System.Windows.Forms.Label();
+            this.pb_ReadFile = new System.Windows.Forms.ProgressBar();
+            this.pb_UMAP = new System.Windows.Forms.ProgressBar();
             this.lbl_AllSentencesCount = new System.Windows.Forms.Label();
             this.lbl_AllWordsCount = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -112,9 +119,12 @@ namespace 텍스트분석기
             this.panel5.SuspendLayout();
             this.tp_2.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.gb_OuterPB.SuspendLayout();
+            this.pn_OuterPB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_UMAPImage)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.gb_Information.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_WordsCount)).BeginInit();
+            this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.pn_Bottom1.SuspendLayout();
@@ -126,7 +136,7 @@ namespace 텍스트분석기
             this.pn_Bottom2.Controls.Add(this.panel12);
             this.pn_Bottom2.Controls.Add(this.panel4);
             this.pn_Bottom2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pn_Bottom2.Location = new System.Drawing.Point(0, 364);
+            this.pn_Bottom2.Location = new System.Drawing.Point(0, 443);
             this.pn_Bottom2.Name = "pn_Bottom2";
             this.pn_Bottom2.Size = new System.Drawing.Size(946, 178);
             this.pn_Bottom2.TabIndex = 9;
@@ -366,7 +376,7 @@ namespace 텍스트분석기
             this.pn_RemoveWord.Dock = System.Windows.Forms.DockStyle.Right;
             this.pn_RemoveWord.Location = new System.Drawing.Point(671, 0);
             this.pn_RemoveWord.Name = "pn_RemoveWord";
-            this.pn_RemoveWord.Size = new System.Drawing.Size(275, 364);
+            this.pn_RemoveWord.Size = new System.Drawing.Size(275, 443);
             this.pn_RemoveWord.TabIndex = 10;
             // 
             // gb_DeletedWordData
@@ -376,7 +386,7 @@ namespace 텍스트분석기
             this.gb_DeletedWordData.Location = new System.Drawing.Point(0, 140);
             this.gb_DeletedWordData.Name = "gb_DeletedWordData";
             this.gb_DeletedWordData.Padding = new System.Windows.Forms.Padding(3, 3, 10, 6);
-            this.gb_DeletedWordData.Size = new System.Drawing.Size(275, 224);
+            this.gb_DeletedWordData.Size = new System.Drawing.Size(275, 303);
             this.gb_DeletedWordData.TabIndex = 17;
             this.gb_DeletedWordData.TabStop = false;
             this.gb_DeletedWordData.Text = "Words to be removed";
@@ -389,7 +399,7 @@ namespace 텍스트분석기
             this.dgv_RemoveWordList.Name = "dgv_RemoveWordList";
             this.dgv_RemoveWordList.RowHeadersWidth = 51;
             this.dgv_RemoveWordList.RowTemplate.Height = 27;
-            this.dgv_RemoveWordList.Size = new System.Drawing.Size(262, 197);
+            this.dgv_RemoveWordList.Size = new System.Drawing.Size(262, 276);
             this.dgv_RemoveWordList.TabIndex = 4;
             // 
             // label8
@@ -475,7 +485,7 @@ namespace 텍스트분석기
             this.pn_View.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_View.Location = new System.Drawing.Point(0, 0);
             this.pn_View.Name = "pn_View";
-            this.pn_View.Size = new System.Drawing.Size(671, 364);
+            this.pn_View.Size = new System.Drawing.Size(671, 443);
             this.pn_View.TabIndex = 11;
             // 
             // tc_Pages
@@ -486,7 +496,7 @@ namespace 텍스트분석기
             this.tc_Pages.Location = new System.Drawing.Point(0, 0);
             this.tc_Pages.Name = "tc_Pages";
             this.tc_Pages.SelectedIndex = 0;
-            this.tc_Pages.Size = new System.Drawing.Size(671, 364);
+            this.tc_Pages.Size = new System.Drawing.Size(671, 443);
             this.tc_Pages.TabIndex = 0;
             // 
             // tp_1
@@ -496,7 +506,7 @@ namespace 텍스트분석기
             this.tp_1.Location = new System.Drawing.Point(4, 25);
             this.tp_1.Name = "tp_1";
             this.tp_1.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_1.Size = new System.Drawing.Size(663, 335);
+            this.tp_1.Size = new System.Drawing.Size(663, 414);
             this.tp_1.TabIndex = 0;
             this.tp_1.Text = "Analysis";
             this.tp_1.UseVisualStyleBackColor = true;
@@ -507,7 +517,7 @@ namespace 텍스트분석기
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 36);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(657, 296);
+            this.panel6.Size = new System.Drawing.Size(657, 375);
             this.panel6.TabIndex = 13;
             // 
             // dgv_AnalysisResult
@@ -519,7 +529,7 @@ namespace 텍스트분석기
             this.dgv_AnalysisResult.Name = "dgv_AnalysisResult";
             this.dgv_AnalysisResult.RowHeadersWidth = 51;
             this.dgv_AnalysisResult.RowTemplate.Height = 27;
-            this.dgv_AnalysisResult.Size = new System.Drawing.Size(657, 296);
+            this.dgv_AnalysisResult.Size = new System.Drawing.Size(657, 375);
             this.dgv_AnalysisResult.TabIndex = 12;
             // 
             // panel5
@@ -577,75 +587,163 @@ namespace 텍스트분석기
             this.tp_2.Location = new System.Drawing.Point(4, 25);
             this.tp_2.Name = "tp_2";
             this.tp_2.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_2.Size = new System.Drawing.Size(663, 335);
+            this.tp_2.Size = new System.Drawing.Size(663, 414);
             this.tp_2.TabIndex = 1;
             this.tp_2.Text = "Graph";
             this.tp_2.UseVisualStyleBackColor = true;
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.groupBox4);
-            this.panel7.Controls.Add(this.groupBox3);
+            this.panel7.Controls.Add(this.gb_OuterPB);
+            this.panel7.Controls.Add(this.gb_Information);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(3, 56);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.panel7.Size = new System.Drawing.Size(657, 221);
+            this.panel7.Size = new System.Drawing.Size(657, 300);
             this.panel7.TabIndex = 6;
             // 
-            // groupBox4
+            // gb_OuterPB
             // 
-            this.groupBox4.Controls.Add(this.pb_UMAPImage);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(305, 5);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupBox4.Size = new System.Drawing.Size(352, 211);
-            this.groupBox4.TabIndex = 19;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Priview UMAP";
+            this.gb_OuterPB.Controls.Add(this.pn_OuterPB);
+            this.gb_OuterPB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gb_OuterPB.Location = new System.Drawing.Point(305, 5);
+            this.gb_OuterPB.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.gb_OuterPB.Name = "gb_OuterPB";
+            this.gb_OuterPB.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.gb_OuterPB.Size = new System.Drawing.Size(352, 290);
+            this.gb_OuterPB.TabIndex = 19;
+            this.gb_OuterPB.TabStop = false;
+            this.gb_OuterPB.Text = "Priview UMAP";
+            // 
+            // pn_OuterPB
+            // 
+            this.pn_OuterPB.AutoScroll = true;
+            this.pn_OuterPB.BackColor = System.Drawing.Color.DimGray;
+            this.pn_OuterPB.Controls.Add(this.pb_UMAPImage);
+            this.pn_OuterPB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pn_OuterPB.Location = new System.Drawing.Point(3, 28);
+            this.pn_OuterPB.Name = "pn_OuterPB";
+            this.pn_OuterPB.Size = new System.Drawing.Size(346, 259);
+            this.pn_OuterPB.TabIndex = 0;
+            this.pn_OuterPB.Resize += new System.EventHandler(this.pn_OuterPB_Resize);
             // 
             // pb_UMAPImage
             // 
-            this.pb_UMAPImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pb_UMAPImage.Location = new System.Drawing.Point(3, 28);
+            this.pb_UMAPImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pb_UMAPImage.Location = new System.Drawing.Point(0, 3);
             this.pb_UMAPImage.Name = "pb_UMAPImage";
             this.pb_UMAPImage.Size = new System.Drawing.Size(346, 180);
-            this.pb_UMAPImage.TabIndex = 16;
+            this.pb_UMAPImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_UMAPImage.TabIndex = 19;
             this.pb_UMAPImage.TabStop = false;
+            this.pb_UMAPImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pb_UMAPImage_MouseDown);
+            this.pb_UMAPImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pb_UMAPImage_MouseMove);
+            this.pb_UMAPImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pb_UMAPImage_MouseUp);
             // 
-            // groupBox3
+            // gb_Information
             // 
-            this.groupBox3.Controls.Add(this.lbl_AllSentencesCount);
-            this.groupBox3.Controls.Add(this.lbl_AllWordsCount);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.groupBox3.Location = new System.Drawing.Point(0, 5);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.groupBox3.Size = new System.Drawing.Size(305, 211);
-            this.groupBox3.TabIndex = 18;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Analyzed Information";
+            this.gb_Information.Controls.Add(this.label5);
+            this.gb_Information.Controls.Add(this.nud_WordsCount);
+            this.gb_Information.Controls.Add(this.btn_OnlyImage);
+            this.gb_Information.Controls.Add(this.panel2);
+            this.gb_Information.Controls.Add(this.lbl_AllSentencesCount);
+            this.gb_Information.Controls.Add(this.lbl_AllWordsCount);
+            this.gb_Information.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gb_Information.Location = new System.Drawing.Point(0, 5);
+            this.gb_Information.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.gb_Information.Name = "gb_Information";
+            this.gb_Information.Padding = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.gb_Information.Size = new System.Drawing.Size(305, 290);
+            this.gb_Information.TabIndex = 18;
+            this.gb_Information.TabStop = false;
+            this.gb_Information.Text = "Analyzed Information";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 86);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(158, 15);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Visible Count of Words";
+            // 
+            // nud_WordsCount
+            // 
+            this.nud_WordsCount.Location = new System.Drawing.Point(171, 82);
+            this.nud_WordsCount.Name = "nud_WordsCount";
+            this.nud_WordsCount.Size = new System.Drawing.Size(131, 25);
+            this.nud_WordsCount.TabIndex = 12;
+            // 
+            // btn_OnlyImage
+            // 
+            this.btn_OnlyImage.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_OnlyImage.Location = new System.Drawing.Point(3, 173);
+            this.btn_OnlyImage.Name = "btn_OnlyImage";
+            this.btn_OnlyImage.Size = new System.Drawing.Size(299, 32);
+            this.btn_OnlyImage.TabIndex = 8;
+            this.btn_OnlyImage.Text = "Only Image View";
+            this.btn_OnlyImage.UseVisualStyleBackColor = true;
+            this.btn_OnlyImage.Click += new System.EventHandler(this.btn_OnlyImage_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.lbl_ReadingStatus);
+            this.panel2.Controls.Add(this.pb_ReadFile);
+            this.panel2.Controls.Add(this.pb_UMAP);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(3, 205);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(299, 75);
+            this.panel2.TabIndex = 11;
+            // 
+            // lbl_ReadingStatus
+            // 
+            this.lbl_ReadingStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbl_ReadingStatus.Font = new System.Drawing.Font("Franklin Gothic Medium Cond", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_ReadingStatus.Location = new System.Drawing.Point(0, 10);
+            this.lbl_ReadingStatus.Name = "lbl_ReadingStatus";
+            this.lbl_ReadingStatus.Size = new System.Drawing.Size(299, 55);
+            this.lbl_ReadingStatus.TabIndex = 13;
+            this.lbl_ReadingStatus.Text = "Status";
+            this.lbl_ReadingStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pb_ReadFile
+            // 
+            this.pb_ReadFile.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pb_ReadFile.ForeColor = System.Drawing.Color.GreenYellow;
+            this.pb_ReadFile.Location = new System.Drawing.Point(0, 0);
+            this.pb_ReadFile.Name = "pb_ReadFile";
+            this.pb_ReadFile.Size = new System.Drawing.Size(299, 10);
+            this.pb_ReadFile.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.pb_ReadFile.TabIndex = 12;
+            // 
+            // pb_UMAP
+            // 
+            this.pb_UMAP.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pb_UMAP.ForeColor = System.Drawing.Color.GreenYellow;
+            this.pb_UMAP.Location = new System.Drawing.Point(0, 65);
+            this.pb_UMAP.Name = "pb_UMAP";
+            this.pb_UMAP.Size = new System.Drawing.Size(299, 10);
+            this.pb_UMAP.TabIndex = 11;
             // 
             // lbl_AllSentencesCount
             // 
             this.lbl_AllSentencesCount.AutoSize = true;
             this.lbl_AllSentencesCount.Location = new System.Drawing.Point(6, 29);
             this.lbl_AllSentencesCount.Name = "lbl_AllSentencesCount";
-            this.lbl_AllSentencesCount.Size = new System.Drawing.Size(169, 15);
+            this.lbl_AllSentencesCount.Size = new System.Drawing.Size(208, 15);
             this.lbl_AllSentencesCount.TabIndex = 5;
-            this.lbl_AllSentencesCount.Text = "All of Sentences Count :";
+            this.lbl_AllSentencesCount.Text = "All of Sentences Count : None";
             // 
             // lbl_AllWordsCount
             // 
             this.lbl_AllWordsCount.AutoSize = true;
             this.lbl_AllWordsCount.Location = new System.Drawing.Point(6, 58);
             this.lbl_AllWordsCount.Name = "lbl_AllWordsCount";
-            this.lbl_AllWordsCount.Size = new System.Drawing.Size(142, 15);
+            this.lbl_AllWordsCount.Size = new System.Drawing.Size(181, 15);
             this.lbl_AllWordsCount.TabIndex = 4;
-            this.lbl_AllWordsCount.Text = "All of Words Count :";
+            this.lbl_AllWordsCount.Text = "All of Words Count : None";
             // 
             // groupBox2
             // 
@@ -688,7 +786,7 @@ namespace 텍스트분석기
             this.groupBox1.Controls.Add(this.rb_UMAP1);
             this.groupBox1.Controls.Add(this.rb_UCINET);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(3, 277);
+            this.groupBox1.Location = new System.Drawing.Point(3, 356);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(657, 55);
             this.groupBox1.TabIndex = 12;
@@ -736,7 +834,7 @@ namespace 텍스트분석기
             this.pn_Bottom1.Controls.Add(this.btn_Export);
             this.pn_Bottom1.Controls.Add(this.btn_Import);
             this.pn_Bottom1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pn_Bottom1.Location = new System.Drawing.Point(0, 542);
+            this.pn_Bottom1.Location = new System.Drawing.Point(0, 621);
             this.pn_Bottom1.Name = "pn_Bottom1";
             this.pn_Bottom1.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.pn_Bottom1.Size = new System.Drawing.Size(946, 44);
@@ -779,7 +877,7 @@ namespace 텍스트분석기
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 586);
+            this.ClientSize = new System.Drawing.Size(946, 665);
             this.Controls.Add(this.pn_View);
             this.Controls.Add(this.pn_RemoveWord);
             this.Controls.Add(this.pn_Bottom2);
@@ -817,10 +915,13 @@ namespace 텍스트분석기
             this.panel5.PerformLayout();
             this.tp_2.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
+            this.gb_OuterPB.ResumeLayout(false);
+            this.pn_OuterPB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_UMAPImage)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.gb_Information.ResumeLayout(false);
+            this.gb_Information.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_WordsCount)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -830,7 +931,6 @@ namespace 텍스트분석기
             this.ResumeLayout(false);
 
         }
-
         #endregion
         private System.Windows.Forms.Panel pn_Bottom2;
         private System.Windows.Forms.Panel pn_RemoveWord;
@@ -863,9 +963,8 @@ namespace 텍스트분석기
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.DataGridView dgv_AnalysisResult;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.PictureBox pb_UMAPImage;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gb_OuterPB;
+        private System.Windows.Forms.GroupBox gb_Information;
         private System.Windows.Forms.Label lbl_AllSentencesCount;
         private System.Windows.Forms.Label lbl_AllWordsCount;
         private System.Windows.Forms.Panel panel9;
@@ -892,6 +991,15 @@ namespace 텍스트분석기
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.CheckBox cb_DataVisible;
+        private System.Windows.Forms.Panel pn_OuterPB;
+        private System.Windows.Forms.PictureBox pb_UMAPImage;
+        private System.Windows.Forms.Button btn_OnlyImage;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lbl_ReadingStatus;
+        private System.Windows.Forms.ProgressBar pb_ReadFile;
+        private System.Windows.Forms.ProgressBar pb_UMAP;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nud_WordsCount;
     }
 }
 

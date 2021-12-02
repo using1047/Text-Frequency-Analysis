@@ -28,3 +28,15 @@ D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bi
 D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Numerics.Vectors.xml
 D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.csproj.CopyComplete
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\MessagePack.Annotations.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\MessagePack.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Collections.Immutable.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\MessagePack.xml
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\MessagePack.Annotations.xml
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Collections.Immutable.xml
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\MNIST-LabelledVectorArray-60000x100.msgpack
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\Waiting.jpg
