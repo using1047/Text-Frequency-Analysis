@@ -51,8 +51,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pn_RemoveWord = new System.Windows.Forms.Panel();
-            this.gb_DeletedWordData = new System.Windows.Forms.GroupBox();
-            this.dgv_RemoveWordList = new System.Windows.Forms.DataGridView();
+            this.gb_WordsData = new System.Windows.Forms.GroupBox();
+            this.dgv_WordList = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.pn_RemoveAddControl = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@
             this.btn_SetLoad = new System.Windows.Forms.Button();
             this.btn_AddWords = new System.Windows.Forms.Button();
             this.tb_RemoveWord = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_StatusWords = new System.Windows.Forms.Label();
             this.pn_View = new System.Windows.Forms.Panel();
             this.tc_Pages = new System.Windows.Forms.TabControl();
             this.tp_1 = new System.Windows.Forms.TabPage();
@@ -108,8 +108,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.panel8.SuspendLayout();
             this.pn_RemoveWord.SuspendLayout();
-            this.gb_DeletedWordData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_RemoveWordList)).BeginInit();
+            this.gb_WordsData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_WordList)).BeginInit();
             this.pn_RemoveAddControl.SuspendLayout();
             this.pn_View.SuspendLayout();
             this.tc_Pages.SuspendLayout();
@@ -370,7 +370,7 @@
             // 
             // pn_RemoveWord
             // 
-            this.pn_RemoveWord.Controls.Add(this.gb_DeletedWordData);
+            this.pn_RemoveWord.Controls.Add(this.gb_WordsData);
             this.pn_RemoveWord.Controls.Add(this.label8);
             this.pn_RemoveWord.Controls.Add(this.pn_RemoveAddControl);
             this.pn_RemoveWord.Dock = System.Windows.Forms.DockStyle.Right;
@@ -379,28 +379,28 @@
             this.pn_RemoveWord.Size = new System.Drawing.Size(275, 443);
             this.pn_RemoveWord.TabIndex = 10;
             // 
-            // gb_DeletedWordData
+            // gb_WordsData
             // 
-            this.gb_DeletedWordData.Controls.Add(this.dgv_RemoveWordList);
-            this.gb_DeletedWordData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gb_DeletedWordData.Location = new System.Drawing.Point(0, 140);
-            this.gb_DeletedWordData.Name = "gb_DeletedWordData";
-            this.gb_DeletedWordData.Padding = new System.Windows.Forms.Padding(3, 3, 10, 6);
-            this.gb_DeletedWordData.Size = new System.Drawing.Size(275, 303);
-            this.gb_DeletedWordData.TabIndex = 17;
-            this.gb_DeletedWordData.TabStop = false;
-            this.gb_DeletedWordData.Text = "Words to be removed";
+            this.gb_WordsData.Controls.Add(this.dgv_WordList);
+            this.gb_WordsData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gb_WordsData.Location = new System.Drawing.Point(0, 140);
+            this.gb_WordsData.Name = "gb_WordsData";
+            this.gb_WordsData.Padding = new System.Windows.Forms.Padding(3, 3, 10, 6);
+            this.gb_WordsData.Size = new System.Drawing.Size(275, 303);
+            this.gb_WordsData.TabIndex = 17;
+            this.gb_WordsData.TabStop = false;
+            this.gb_WordsData.Text = "Words to be removed";
             // 
-            // dgv_RemoveWordList
+            // dgv_WordList
             // 
-            this.dgv_RemoveWordList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_RemoveWordList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_RemoveWordList.Location = new System.Drawing.Point(3, 21);
-            this.dgv_RemoveWordList.Name = "dgv_RemoveWordList";
-            this.dgv_RemoveWordList.RowHeadersWidth = 51;
-            this.dgv_RemoveWordList.RowTemplate.Height = 27;
-            this.dgv_RemoveWordList.Size = new System.Drawing.Size(262, 276);
-            this.dgv_RemoveWordList.TabIndex = 4;
+            this.dgv_WordList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_WordList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_WordList.Location = new System.Drawing.Point(3, 21);
+            this.dgv_WordList.Name = "dgv_WordList";
+            this.dgv_WordList.RowHeadersWidth = 51;
+            this.dgv_WordList.RowTemplate.Height = 27;
+            this.dgv_WordList.Size = new System.Drawing.Size(262, 276);
+            this.dgv_WordList.TabIndex = 4;
             // 
             // label8
             // 
@@ -417,7 +417,7 @@
             this.pn_RemoveAddControl.Controls.Add(this.btn_SetLoad);
             this.pn_RemoveAddControl.Controls.Add(this.btn_AddWords);
             this.pn_RemoveAddControl.Controls.Add(this.tb_RemoveWord);
-            this.pn_RemoveAddControl.Controls.Add(this.label6);
+            this.pn_RemoveAddControl.Controls.Add(this.lbl_StatusWords);
             this.pn_RemoveAddControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.pn_RemoveAddControl.Location = new System.Drawing.Point(0, 0);
             this.pn_RemoveAddControl.Name = "pn_RemoveAddControl";
@@ -470,14 +470,14 @@
             this.tb_RemoveWord.Size = new System.Drawing.Size(257, 25);
             this.tb_RemoveWord.TabIndex = 4;
             // 
-            // label6
+            // lbl_StatusWords
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 9);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(101, 15);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Remove Word";
+            this.lbl_StatusWords.AutoSize = true;
+            this.lbl_StatusWords.Location = new System.Drawing.Point(7, 9);
+            this.lbl_StatusWords.Name = "lbl_StatusWords";
+            this.lbl_StatusWords.Size = new System.Drawing.Size(101, 15);
+            this.lbl_StatusWords.TabIndex = 3;
+            this.lbl_StatusWords.Text = "Remove Word";
             // 
             // pn_View
             // 
@@ -498,6 +498,7 @@
             this.tc_Pages.SelectedIndex = 0;
             this.tc_Pages.Size = new System.Drawing.Size(671, 443);
             this.tc_Pages.TabIndex = 0;
+            this.tc_Pages.SelectedIndexChanged += new System.EventHandler(this.tc_Pages_SelectedIndexChanged);
             // 
             // tp_1
             // 
@@ -902,8 +903,8 @@
             this.panel8.PerformLayout();
             this.pn_RemoveWord.ResumeLayout(false);
             this.pn_RemoveWord.PerformLayout();
-            this.gb_DeletedWordData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_RemoveWordList)).EndInit();
+            this.gb_WordsData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_WordList)).EndInit();
             this.pn_RemoveAddControl.ResumeLayout(false);
             this.pn_RemoveAddControl.PerformLayout();
             this.pn_View.ResumeLayout(false);
@@ -937,7 +938,7 @@
         private System.Windows.Forms.Panel pn_RemoveAddControl;
         private System.Windows.Forms.Button btn_AddWords;
         private System.Windows.Forms.TextBox tb_RemoveWord;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbl_StatusWords;
         private System.Windows.Forms.Button btn_SetSave;
         private System.Windows.Forms.Button btn_SetLoad;
         private System.Windows.Forms.Label label7;
@@ -954,8 +955,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btn_LoadNewText;
         private System.Windows.Forms.CheckBox cb_UseAnalysisFile;
-        private System.Windows.Forms.GroupBox gb_DeletedWordData;
-        private System.Windows.Forms.DataGridView dgv_RemoveWordList;
+        private System.Windows.Forms.GroupBox gb_WordsData;
+        private System.Windows.Forms.DataGridView dgv_WordList;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Button btn_Load;
         private System.Windows.Forms.Label lbl_TextFilePath;

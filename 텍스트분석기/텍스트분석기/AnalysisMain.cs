@@ -45,13 +45,17 @@ namespace 텍스트분석기
             dgv_AnalysisResult.Columns.Add("Count", "Count");
 
             dgv_AnalysisResult.Columns["Word"].Width = dgv_AnalysisResult.Width / 2 - 10;
-            dgv_AnalysisResult.Columns["Count"].Width = dgv_AnalysisResult.Width / 2 - 42;
+            dgv_AnalysisResult.Columns["Count"].Width = dgv_AnalysisResult.Width / 2 - 42
+                ;
+            dgv_AnalysisResult.AllowUserToAddRows = false;
 
-            dgv_RemoveWordList.Columns.Add("Word", "Word");
-            dgv_RemoveWordList.Columns.Add("Deleted", "Deleted");
+            dgv_WordList.Columns.Add("Word", "Word");
+            dgv_WordList.Columns.Add("Deleted", "Deleted");
 
-            dgv_RemoveWordList.Columns["Word"].Width = dgv_RemoveWordList.Width / 2 - 10;
-            dgv_RemoveWordList.Columns["Deleted"].Width = dgv_RemoveWordList.Width / 2 - 42;
+            dgv_WordList.Columns["Word"].Width = dgv_WordList.Width / 2 - 10;
+            dgv_WordList.Columns["Deleted"].Width = dgv_WordList.Width / 2 - 42;
+
+            dgv_WordList.AllowUserToAddRows = false;
 
             btn_Pause.Left = (pn_Bottom1.Width - btn_Pause.Width) / 2;
 
@@ -196,11 +200,11 @@ namespace 텍스트분석기
                 FileStream fileStream = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write);
                 StreamWriter sw = new StreamWriter(fileStream);
 
-                for (int Row = 0; Row < dgv_RemoveWordList.Rows.Count; Row++)
+                for (int Row = 0; Row < dgv_WordList.Rows.Count; Row++)
                 {
-                    if (dgv_RemoveWordList.Rows[Row].Cells[0].Value != null)
+                    if (dgv_WordList.Rows[Row].Cells[0].Value != null)
                     {
-                        sw.WriteLine(dgv_RemoveWordList.Rows[Row].Cells[0].Value);
+                        sw.WriteLine(dgv_WordList.Rows[Row].Cells[0].Value);
                     }
                 }
 
@@ -223,12 +227,12 @@ namespace 텍스트분석기
                 {
                     using (StreamReader sr = new StreamReader(ofd.FileName, Encoding.UTF8))
                     {
-                        dgv_RemoveWordList.Rows.Clear();
+                        dgv_WordList.Rows.Clear();
 
                         while (!sr.EndOfStream)
                         {
                             string Word = sr.ReadLine();
-                            if (Word != "") dgv_RemoveWordList.Rows.Add(Word, false.ToString());
+                            if (Word != "") dgv_WordList.Rows.Add(Word, false.ToString());
                         }
                     }
                 }
@@ -260,7 +264,7 @@ namespace 텍스트분석기
             if (tb_RemoveWord.Text != "")
             {
                 bool check = false;
-                foreach (DataGridViewRow Row in dgv_RemoveWordList.Rows)
+                foreach (DataGridViewRow Row in dgv_WordList.Rows)
                 {
                     if (Row.Cells[0].Value != null)
                     {
@@ -269,7 +273,7 @@ namespace 텍스트분석기
                 }
                 if (!check)
                 {
-                    dgv_RemoveWordList.Rows.Add(tb_RemoveWord.Text, false.ToString());
+                    dgv_WordList.Rows.Add(tb_RemoveWord.Text, false.ToString());
                     tb_RemoveWord.Text = "";
                 }
             }
@@ -406,7 +410,7 @@ namespace 텍스트분석기
         {
             if (Line.Length > 0)
             {
-                foreach (DataGridViewRow Row in dgv_RemoveWordList.Rows)
+                foreach (DataGridViewRow Row in dgv_WordList.Rows)
                 {
                     if (Row.Cells[0].Value != null)
                     {
@@ -911,6 +915,62 @@ namespace 텍스트분석기
             if (point < 0) return 0;
             else if (point > max) return max - 1;
             else return point;
+        }
+
+        /// <summary>
+        /// 이전 데이터
+        /// </summary>
+        List<DataGridViewRow> ForeDataGrid = new List<DataGridViewRow>();
+
+        /// <summary>
+        /// 페이지 변경 시 이벤트 처리
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tc_Pages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // 데이터가 있을 때
+            if(dgv_WordList.Rows.Count > 0)
+            {
+                // 이전 데이터가 있을 때
+                if(ForeDataGrid.Count > 0)
+                {
+                    List<DataGridViewRow> TempDataGrid = new List<DataGridViewRow>();
+                    foreach (DataGridViewRow Row in dgv_WordList.Rows)
+                    {
+                        TempDataGrid.Add(Row);
+                    }
+                    dgv_WordList.Rows.Clear();
+                    foreach(DataGridViewRow Row in ForeDataGrid)
+                    {
+                        dgv_WordList.Rows.Add(Row);
+                    }
+                    ForeDataGrid.Clear();
+                    ForeDataGrid = TempDataGrid;
+                }
+                // 이전 데이터가 없을 때
+                else
+                {
+                    foreach(DataGridViewRow Row in dgv_WordList.Rows)
+                    {
+                        ForeDataGrid.Add(Row);
+                    }
+                    dgv_WordList.Rows.Clear();
+                }
+            }
+            // 데이터가 없을 때
+            else
+            {
+                // 이전 데이터가 있을 때
+                if(ForeDataGrid.Count > 0)
+                {
+                    foreach (var Row in ForeDataGrid)
+                    {
+                        dgv_WordList.Rows.Add(Row);
+                    }
+                    ForeDataGrid.Clear();
+                }
+            }
         }
     }
 
