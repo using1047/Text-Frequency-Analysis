@@ -574,9 +574,14 @@ namespace 텍스트분석기
                     if (dr == DialogResult.OK)
                     {
                         SavePath = ofd.FileName;
-                        Current = Create_UMAP(SavePath);
-                        pb_UMAPImage.BackgroundImage = Current;
-                        pb_UMAPImage.Refresh();
+
+                        var ThreadCreateUmap = new Thread(() =>
+                        {
+                            Current = Create_UMAP(SavePath);
+                            pb_UMAPImage.BackgroundImage = Current;
+                        });
+
+                        ThreadCreateUmap.Start();
                     }
                     else if (dr == DialogResult.Cancel) { }
                     else { }
@@ -591,6 +596,49 @@ namespace 텍스트분석기
         const int bitwidth = 1600;
         const int bitheight = 1200;
 
+        void Update_Text(Control ctl, string message)
+        {
+            if(ctl.InvokeRequired)
+            {
+                ctl.Invoke(new Action(delegate ()
+                {
+                    ctl.Text = message;
+                }));
+            }
+            else
+            {
+                ctl.Text = message;
+            }
+        }
+        void Update_Visible(Control ctl, bool Power)
+        {
+            if(ctl.InvokeRequired)
+            {
+                ctl.Invoke(new Action(delegate ()
+                {
+                    ctl.Visible = Power;
+                }));
+            }
+            else
+            {
+                ctl.Visible = Power;
+            }
+        }
+        void Update_Value(ProgressBar ctl, int Value)
+        {
+            if(ctl.InvokeRequired)
+            {
+                ctl.Invoke(new Action(delegate ()
+                {
+                    ctl.Value = Value;
+                }));
+            }
+            else
+            {
+                ctl.Value = Value;
+            }
+        }
+
         Dictionary<string, int> ExistWord = new Dictionary<string, int>();
         Bitmap Create_UMAP(string FilePath)
         {
@@ -603,9 +651,9 @@ namespace 텍스트분석기
                 if (SaveDataCount > 0) LV = new LabelledVector[SaveDataCount];
                 else LV = new LabelledVector[W];
 
-                pb_ReadFile.Visible = true;
-                lbl_ReadingStatus.Visible = true;
-                lbl_ReadingStatus.Text = "Read the file...";
+                Update_Visible(pb_ReadFile, true);
+                Update_Visible(lbl_ReadingStatus, true);
+                Update_Text(lbl_ReadingStatus, "Read the file...");
 
                 // 메세지 팩 데이터 불러오기
                 var data = MessagePackSerializer.Deserialize<LabelledVector[]>(File.ReadAllBytes(MessagePackPath));
@@ -615,7 +663,6 @@ namespace 텍스트분석기
                 {
                     while (!sr.EndOfStream)
                     {
-                        Application.DoEvents();
                         string[] Text = sr.ReadLine().Split('\t');
                         S = Text.Length - 1;
                         
@@ -627,7 +674,6 @@ namespace 텍스트분석기
                             {
                                 var t = float.Parse(Text[CurrentCell]);
                                 Values[CurrentCell] = t;
-                                Application.DoEvents();
                             }
 
                             try
@@ -638,46 +684,39 @@ namespace 텍스트분석기
                                 LV[DataP].Vector = Values;
 
                                 DataP++;
-                                Application.DoEvents();
                             }
                             catch { MessageBox.Show(DataP.ToString() + "번 째 데이터가 이상합니다!"); }
                         }
-                        Application.DoEvents();
                     }
                 }
 
-                lbl_AllSentencesCount.Text = "All of Sentences Count : " + (S-1);
-                lbl_AllWordsCount.Text = "All of Words Count : " + W;
-
-                
-                lbl_ReadingStatus.Text = "Train...";
+                Update_Text(lbl_AllSentencesCount, "All of Sentences Count : " + (S-1));
+                Update_Text(lbl_AllWordsCount, "All of Words Count : " + W);
+                Update_Text(lbl_ReadingStatus, "Train...");
 
                 var timer = Stopwatch.StartNew();
                 var umap = new Umap(distance: Umap.DistanceFunctions.CosineForNormalizedVectors);
                 var nEpochs = umap.InitializeFit(LV.Select(entry => entry.Vector).ToArray());
-                
-                pb_ReadFile.Visible = false;
-                pb_UMAP.Visible = true;
+
+                Update_Visible(pb_ReadFile, false);
+                Update_Visible(pb_UMAP, true);
                 for (var i = 0; i < nEpochs; i++)
                 {
                     umap.Step();
                     if ((i % 10) == 0)
                     {
-                        pb_UMAP.Value = ValueTo100(nEpochs, i);
-                        Application.DoEvents();
+                        Update_Value(pb_UMAP, ValueTo100(nEpochs, i));
                     }
-                    Application.DoEvents();
                 }
-                pb_UMAP.Value = 0;
-                pb_UMAP.Visible = false;
-                lbl_ReadingStatus.Text = "Status";
-                lbl_ReadingStatus.Visible = false;
+                Update_Value(pb_UMAP, 0);
+                Update_Visible(pb_UMAP, false);
+                Update_Text(lbl_ReadingStatus, "Status");
+                Update_Visible(lbl_ReadingStatus, false);
 
                 var embeddings = umap.GetEmbedding()
                     .Select(vector => new { X = vector[0], Y = vector[1]})
                     .ToArray();
 
-                Application.DoEvents();
                 timer.Stop();
 
                 var minX = embeddings.Min(vector => vector.X);
@@ -706,10 +745,7 @@ namespace 텍스트분석기
                         foreach (var (vector, uid) in scaledEmbeddings.Zip(LV, (vector, entry) => (vector, entry.UID)).OrderByDescending(x => x.UID))
                         {
                             g.DrawString(uid, font, Brushes.White, vector.X * bitwidth, vector.Y * bitheight);
-                            Count++;
-
-                            Application.DoEvents();
-                            
+                            Count++;                            
                         }
                     }
                 }
