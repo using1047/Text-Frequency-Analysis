@@ -50,10 +50,10 @@ namespace 텍스트분석기
             dgv_AnalysisResult.AllowUserToAddRows = false;
 
             dgv_WordList.Columns.Add("Word", "Word");
-            dgv_WordList.Columns.Add("Deleted", "Deleted");
+            dgv_WordList.Columns.Add("Status", "Status");
 
             dgv_WordList.Columns["Word"].Width = dgv_WordList.Width / 2 - 10;
-            dgv_WordList.Columns["Deleted"].Width = dgv_WordList.Width / 2 - 42;
+            dgv_WordList.Columns["Status"].Width = dgv_WordList.Width / 2 - 42;
 
             dgv_WordList.AllowUserToAddRows = false;
 
@@ -108,7 +108,8 @@ namespace 텍스트분석기
             if (OriginalFilePath != "")
             {
                 pn_RemoveAddControl.Enabled = false;
-                ThreadNRead();
+                Thread ThreadRead = new Thread(() => ThreadNRead());
+                ThreadRead.Start();
             }
             else
             {
@@ -929,6 +930,17 @@ namespace 텍스트분석기
         /// <param name="e"></param>
         private void tc_Pages_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(tc_Pages.SelectedIndex == 0)
+            {
+                lbl_StatusWords.Text = "Remove Words";
+                gb_WordsData.Text = "Words to be removed";
+            }
+            else if(tc_Pages.SelectedIndex == 1)
+            {
+                lbl_StatusWords.Text = "Display Words";
+                gb_WordsData.Text = "Words to be Displayed";
+            }
+
             // 데이터가 있을 때
             if(dgv_WordList.Rows.Count > 0)
             {
