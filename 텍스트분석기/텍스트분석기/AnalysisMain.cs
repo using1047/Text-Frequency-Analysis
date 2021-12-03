@@ -14,6 +14,8 @@ using MessagePack;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
+using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace 텍스트분석기
 {
@@ -33,10 +35,7 @@ namespace 텍스트분석기
         {
             InitializeComponent();
 
-            tb_LinesCount.Enabled = false;
-            tb_WordsCount.Enabled = false;
-            tb_WordNumber.Visible = false;
-            lbl_SearchText.Visible = false;
+            pn_Bottom_Mid.Enabled = false;
 
             btn_Pause.Visible = false;
             btn_Export.Visible = false;
@@ -48,6 +47,7 @@ namespace 텍스트분석기
             dgv_AnalysisResult.Columns["Count"].Width = dgv_AnalysisResult.Width / 2 - 42
                 ;
             dgv_AnalysisResult.AllowUserToAddRows = false;
+            dgv_AnalysisResult.RowHeadersVisible = false;
 
             dgv_WordList.Columns.Add("Word", "Word");
             dgv_WordList.Columns.Add("Status", "Status");
@@ -56,8 +56,9 @@ namespace 텍스트분석기
             dgv_WordList.Columns["Status"].Width = dgv_WordList.Width / 2 - 42;
 
             dgv_WordList.AllowUserToAddRows = false;
+            dgv_WordList.RowHeadersVisible = false;
 
-            btn_Pause.Left = (pn_Bottom1.Width - btn_Pause.Width) / 2;
+            btn_Pause.Left = (pn_Bottom_Bottom.Width - btn_Pause.Width) / 2;
 
             pb_UMAP.Visible = false;
             pb_ReadFile.Visible = false;
@@ -294,14 +295,13 @@ namespace 텍스트분석기
 
                     if (!Pause)
                     {
-                        btn_Pause.Visible = true;
-                        btn_Pause.Text = "■";
-
-                        btn_Export.Visible = true;
+                        Update_Visible(btn_Pause, true);
+                        Update_Text(btn_Pause, "■");
+                        Update_Visible(btn_Export, true);
                     }
 
-                    btn_StartAnalysis.Enabled = false;
-
+                    Update_Enable(btn_StartAnalysis, false);
+                    if (UpdateEpochs.Value == 0) UpdateNUD_Value(UpdateEpochs, 1000);
                     while (!sr.EndOfStream)
                     {
                         string StrLine = sr.ReadLine();
@@ -314,6 +314,7 @@ namespace 텍스트분석기
                         // 단어가 1개 이상일 때 실행
                         if (StrWords.Length > 0)
                         {
+                            string Status = "";
                             // 단어 개수만큼
                             for (int num = 0; num < StrWords.Length; num++)
                             {
@@ -323,11 +324,9 @@ namespace 텍스트분석기
                                 {
                                     if (StrWords[num] != "") AllText.Add(StrWords[num], 1);
                                 }
-                                tb_WordsCount.Text = AllText.Count.ToString();
-
+                               
                                 // 현재 라인 번호 / 전체 라인 개 수
-                                string Status = (NLine.ToString() + " / " + ALine.ToString());
-                                tb_LinesCount.Text = Status;
+                               Status = (NLine.ToString() + " / " + ALine.ToString());
 
                                 // Pause인지 확인하는 구문
                                 while (Pause)
@@ -335,8 +334,11 @@ namespace 텍스트분석기
                                     PauseEvent.WaitOne();
                                     Application.DoEvents();
                                 }
-                                Application.DoEvents();
                             }
+                            Thread.Sleep(1);
+                            Update_Text(lbl_WordsCount, AllText.Count.ToString());
+                            Update_Text(lbl_LinesCount, Status);
+                            Thread.Sleep(1);
                         }
 
                         // 10000번째 줄 마다 5개 미만인 단어 없애기
@@ -358,21 +360,20 @@ namespace 텍스트분석기
                         }
 
                         // 1000번째 줄 마다 업데이트
-                        else if (NLine % 1000 == 0 && NLine != 0)
+                        else if (UpdateEpochs.Value != 0 && NLine % UpdateEpochs.Value == 0)
                         {
-                            pb_Update.Value = 0;
-                            tb_WordNumber.Visible = true;
-                            lbl_SearchText.Visible = true;
+                            UpdatePB_Value(pb_Update, 0);
+                            Update_Enable(pn_Bottom_Mid, true);
                             dgv_AnalysisResult.Rows.Clear();
 
                             int CurrentNumber = 1;
 
-
                             // 업데이트 구문
                             foreach (var Text in AllText)
                             {
-                                tb_WordNumber.Text = CurrentNumber.ToString();
-                                Application.DoEvents();
+                                Update_Text(lbl_WordNumber, CurrentNumber.ToString());
+                                UpdatePB_Value(pb_Update, ValueTo100(AllText.Count, CurrentNumber));
+                                Thread.Sleep(1);
                                 if (Text.Value > 100)
                                 {
                                     dgv_AnalysisResult.Rows.Add(Text.Key, Text.Value);
@@ -381,20 +382,12 @@ namespace 텍스트분석기
                             }
                             dgv_AnalysisResult.Sort(new RowComparer(SortOrder.Descending));
 
-                            tb_WordNumber.Visible = false;
-                            lbl_SearchText.Visible = false;
-                        }
-
-                        // 그 외에는 프로그래스 바 진행도 올리기
-                        else if (NLine % 100 == 0 && NLine != 0)
-                        {
-                            pb_Update.Value = NLine % 1000 / 10;
+                            Update_Enable(pn_Bottom_Mid, false);
                         }
 
                     }
                 }
-
-                btn_StartAnalysis.Visible = true;
+                Update_Enable(btn_StartAnalysis, true);
             }
             catch (Exception e)
             {
@@ -448,8 +441,7 @@ namespace 텍스트분석기
         /// </summary>
         void Ctl_PausePostionChange()
         {
-            btn_Pause.Left = (pn_Bottom1.Width - btn_Pause.Width) / 2;
-            this.Refresh();
+            btn_Pause.Left = (pn_Bottom_Bottom.Width - btn_Pause.Width) / 2;
         }
 
         // 전체 문장 목록
@@ -554,8 +546,6 @@ namespace 텍스트분석기
             }
             Current = Create_UMAP(SavePath);
             pb_UMAPImage.BackgroundImage = Current;
-            pb_UMAPImage.Refresh();
-            Application.DoEvents();
         }
 
         /// <summary>
@@ -624,18 +614,50 @@ namespace 텍스트분석기
                 ctl.Visible = Power;
             }
         }
-        void Update_Value(ProgressBar ctl, int Value)
+        void UpdatePB_Value(ProgressBar ctl, int Value)
         {
             if(ctl.InvokeRequired)
             {
                 ctl.Invoke(new Action(delegate ()
                 {
                     ctl.Value = Value;
+                    ctl.Update();
                 }));
             }
             else
             {
                 ctl.Value = Value;
+                ctl.Update();
+            }
+        }
+        void UpdateNUD_Value(NumericUpDown ctl, int Value)
+        {
+            if (ctl.InvokeRequired)
+            {
+                ctl.Invoke(new Action(delegate ()
+                {
+                    ctl.Value = Value;
+                    ctl.Update();
+                }));
+            }
+            else
+            {
+                ctl.Value = Value;
+                ctl.Update();
+            }
+        }
+        void Update_Enable(Control ctl, bool Enable)
+        {
+            if(ctl.InvokeRequired)
+            {
+                ctl.Invoke(new Action(delegate
+                {
+                    ctl.Enabled = Enable;
+                }));
+            }
+            else
+            {
+                ctl.Enabled = Enable;
             }
         }
 
@@ -692,7 +714,6 @@ namespace 텍스트분석기
 
                 Update_Text(lbl_AllSentencesCount, "All of Sentences Count : " + (S-1));
                 Update_Text(lbl_AllWordsCount, "All of Words Count : " + W);
-                Update_Text(lbl_ReadingStatus, "Train...");
 
                 var timer = Stopwatch.StartNew();
                 var umap = new Umap(distance: Umap.DistanceFunctions.CosineForNormalizedVectors);
@@ -700,15 +721,16 @@ namespace 텍스트분석기
 
                 Update_Visible(pb_ReadFile, false);
                 Update_Visible(pb_UMAP, true);
+                Update_Text(lbl_ReadingStatus, "Train...");
                 for (var i = 0; i < nEpochs; i++)
                 {
                     umap.Step();
                     if ((i % 10) == 0)
                     {
-                        Update_Value(pb_UMAP, ValueTo100(nEpochs, i));
+                        UpdatePB_Value(pb_UMAP, ValueTo100(nEpochs, i));
                     }
                 }
-                Update_Value(pb_UMAP, 0);
+                UpdatePB_Value(pb_UMAP, 0);
                 Update_Visible(pb_UMAP, false);
                 Update_Text(lbl_ReadingStatus, "Status");
                 Update_Visible(lbl_ReadingStatus, false);
@@ -881,9 +903,6 @@ namespace 텍스트분석기
             {
                 pb_UMAPImage.Width = pn_OuterPB.Width;
                 pb_UMAPImage.Height = pn_OuterPB.Height;
-
-                pb_UMAPImage.Refresh();
-                Application.DoEvents();
             }
             catch { }
         }
@@ -1020,6 +1039,10 @@ namespace 텍스트분석기
                 }
             }
         }
+
+        private void sc_Umap_Panel1_Resize(object sender, EventArgs e)
+        {
+        }
     }
 
     /// <summary>
@@ -1071,7 +1094,6 @@ namespace 텍스트분석기
         [Key(0)] public string UID;
         [Key(1)] public float[] Vector;
     }
-
 }
 
 
