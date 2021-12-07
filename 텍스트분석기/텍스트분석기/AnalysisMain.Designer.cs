@@ -61,6 +61,47 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.cb_DataVisible = new System.Windows.Forms.CheckBox();
             this.btn_StartAnalysis = new System.Windows.Forms.Button();
+            this.pn_Bottom_Bottom = new System.Windows.Forms.Panel();
+            this.btn_Pause = new System.Windows.Forms.Button();
+            this.btn_Export = new System.Windows.Forms.Button();
+            this.btn_Import = new System.Windows.Forms.Button();
+            this.splitCon_TOP = new System.Windows.Forms.SplitContainer();
+            this.tc_Pages = new System.Windows.Forms.TabControl();
+            this.tp_1 = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.dgv_AnalysisResult = new System.Windows.Forms.DataGridView();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.btn_Load = new System.Windows.Forms.Button();
+            this.lbl_TextFilePath = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tp_2 = new System.Windows.Forms.TabPage();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.sc_Umap = new System.Windows.Forms.SplitContainer();
+            this.gb_Information = new System.Windows.Forms.GroupBox();
+            this.btn_AnalyzedInformationClose = new System.Windows.Forms.Button();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.nud_WordsCount = new System.Windows.Forms.NumericUpDown();
+            this.lbl_AllSentencesCount = new System.Windows.Forms.Label();
+            this.lbl_AllWordsCount = new System.Windows.Forms.Label();
+            this.ViewOptions = new System.Windows.Forms.Panel();
+            this.rb_SelectedWords = new System.Windows.Forms.RadioButton();
+            this.rb_AllWords = new System.Windows.Forms.RadioButton();
+            this.btn_OnlyImage = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbl_ReadingStatus = new System.Windows.Forms.Label();
+            this.pb_ReadFile = new System.Windows.Forms.ProgressBar();
+            this.pb_UMAP = new System.Windows.Forms.ProgressBar();
+            this.gb_OuterPB = new System.Windows.Forms.GroupBox();
+            this.pn_OuterPB = new System.Windows.Forms.Panel();
+            this.pb_UMAPImage = new System.Windows.Forms.PictureBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cb_UseAnalysisFile = new System.Windows.Forms.CheckBox();
+            this.btn_LoadNewText = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_SaveData = new System.Windows.Forms.Button();
+            this.rb_UMAP1 = new System.Windows.Forms.RadioButton();
+            this.rb_UCINET = new System.Windows.Forms.RadioButton();
             this.pn_RemoveWord = new System.Windows.Forms.Panel();
             this.gb_WordsData = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -74,45 +115,6 @@
             this.tb_Word = new System.Windows.Forms.TextBox();
             this.lbl_StatusWords = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.pn_View = new System.Windows.Forms.Panel();
-            this.tc_Pages = new System.Windows.Forms.TabControl();
-            this.tp_1 = new System.Windows.Forms.TabPage();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.dgv_AnalysisResult = new System.Windows.Forms.DataGridView();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.btn_Load = new System.Windows.Forms.Button();
-            this.lbl_TextFilePath = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tp_2 = new System.Windows.Forms.TabPage();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.sc_Umap = new System.Windows.Forms.SplitContainer();
-            this.gb_Information = new System.Windows.Forms.GroupBox();
-            this.ViewOptions = new System.Windows.Forms.Panel();
-            this.rb_SelectedWords = new System.Windows.Forms.RadioButton();
-            this.rb_AllWords = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.nud_WordsCount = new System.Windows.Forms.NumericUpDown();
-            this.btn_OnlyImage = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lbl_ReadingStatus = new System.Windows.Forms.Label();
-            this.pb_ReadFile = new System.Windows.Forms.ProgressBar();
-            this.pb_UMAP = new System.Windows.Forms.ProgressBar();
-            this.lbl_AllSentencesCount = new System.Windows.Forms.Label();
-            this.lbl_AllWordsCount = new System.Windows.Forms.Label();
-            this.gb_OuterPB = new System.Windows.Forms.GroupBox();
-            this.pn_OuterPB = new System.Windows.Forms.Panel();
-            this.pb_UMAPImage = new System.Windows.Forms.PictureBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cb_UseAnalysisFile = new System.Windows.Forms.CheckBox();
-            this.btn_LoadNewText = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_SaveData = new System.Windows.Forms.Button();
-            this.rb_UMAP1 = new System.Windows.Forms.RadioButton();
-            this.rb_UCINET = new System.Windows.Forms.RadioButton();
-            this.pn_Bottom_Bottom = new System.Windows.Forms.Panel();
-            this.btn_Pause = new System.Windows.Forms.Button();
-            this.btn_Export = new System.Windows.Forms.Button();
-            this.btn_Import = new System.Windows.Forms.Button();
             this.pn_Bottom2.SuspendLayout();
             this.pn_Bottom_Mid.SuspendLayout();
             this.pn_Update.SuspendLayout();
@@ -134,12 +136,11 @@
             this.pn_DeleteCount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DeleteEpochs)).BeginInit();
             this.panel8.SuspendLayout();
-            this.pn_RemoveWord.SuspendLayout();
-            this.pn_RemoveAddControl.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.pn_View.SuspendLayout();
+            this.pn_Bottom_Bottom.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitCon_TOP)).BeginInit();
+            this.splitCon_TOP.Panel1.SuspendLayout();
+            this.splitCon_TOP.Panel2.SuspendLayout();
+            this.splitCon_TOP.SuspendLayout();
             this.tc_Pages.SuspendLayout();
             this.tp_1.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -152,15 +153,20 @@
             this.sc_Umap.Panel2.SuspendLayout();
             this.sc_Umap.SuspendLayout();
             this.gb_Information.SuspendLayout();
-            this.ViewOptions.SuspendLayout();
+            this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_WordsCount)).BeginInit();
+            this.ViewOptions.SuspendLayout();
             this.panel2.SuspendLayout();
             this.gb_OuterPB.SuspendLayout();
             this.pn_OuterPB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_UMAPImage)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.pn_Bottom_Bottom.SuspendLayout();
+            this.pn_RemoveWord.SuspendLayout();
+            this.pn_RemoveAddControl.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // pn_Bottom2
@@ -171,7 +177,7 @@
             this.pn_Bottom2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pn_Bottom2.Location = new System.Drawing.Point(0, 494);
             this.pn_Bottom2.Name = "pn_Bottom2";
-            this.pn_Bottom2.Size = new System.Drawing.Size(1206, 246);
+            this.pn_Bottom2.Size = new System.Drawing.Size(1367, 246);
             this.pn_Bottom2.TabIndex = 9;
             // 
             // pn_Bottom_Mid
@@ -182,7 +188,7 @@
             this.pn_Bottom_Mid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_Bottom_Mid.Location = new System.Drawing.Point(0, 159);
             this.pn_Bottom_Mid.Name = "pn_Bottom_Mid";
-            this.pn_Bottom_Mid.Size = new System.Drawing.Size(1206, 87);
+            this.pn_Bottom_Mid.Size = new System.Drawing.Size(1367, 87);
             this.pn_Bottom_Mid.TabIndex = 36;
             // 
             // pn_Update
@@ -193,7 +199,7 @@
             this.pn_Update.Location = new System.Drawing.Point(0, 44);
             this.pn_Update.Name = "pn_Update";
             this.pn_Update.Padding = new System.Windows.Forms.Padding(0, 7, 0, 7);
-            this.pn_Update.Size = new System.Drawing.Size(1206, 43);
+            this.pn_Update.Size = new System.Drawing.Size(1367, 43);
             this.pn_Update.TabIndex = 31;
             // 
             // pn_UpdatePB
@@ -203,7 +209,7 @@
             this.pn_UpdatePB.Location = new System.Drawing.Point(170, 7);
             this.pn_UpdatePB.Name = "pn_UpdatePB";
             this.pn_UpdatePB.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.pn_UpdatePB.Size = new System.Drawing.Size(1036, 29);
+            this.pn_UpdatePB.Size = new System.Drawing.Size(1197, 29);
             this.pn_UpdatePB.TabIndex = 34;
             // 
             // pb_Update
@@ -211,7 +217,7 @@
             this.pb_Update.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pb_Update.Location = new System.Drawing.Point(10, 0);
             this.pb_Update.Name = "pb_Update";
-            this.pb_Update.Size = new System.Drawing.Size(1016, 29);
+            this.pb_Update.Size = new System.Drawing.Size(1177, 29);
             this.pb_Update.TabIndex = 35;
             // 
             // label6
@@ -234,7 +240,7 @@
             this.pn_Search.Dock = System.Windows.Forms.DockStyle.Top;
             this.pn_Search.Location = new System.Drawing.Point(0, 0);
             this.pn_Search.Name = "pn_Search";
-            this.pn_Search.Size = new System.Drawing.Size(1206, 44);
+            this.pn_Search.Size = new System.Drawing.Size(1367, 44);
             this.pn_Search.TabIndex = 30;
             // 
             // panel13
@@ -244,7 +250,7 @@
             this.panel13.Location = new System.Drawing.Point(177, 0);
             this.panel13.Margin = new System.Windows.Forms.Padding(0);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(1029, 44);
+            this.panel13.Size = new System.Drawing.Size(1190, 44);
             this.panel13.TabIndex = 33;
             // 
             // lbl_WordNumber
@@ -253,7 +259,7 @@
             this.lbl_WordNumber.Font = new System.Drawing.Font("Calibri", 10.2F);
             this.lbl_WordNumber.Location = new System.Drawing.Point(0, 0);
             this.lbl_WordNumber.Name = "lbl_WordNumber";
-            this.lbl_WordNumber.Size = new System.Drawing.Size(1029, 44);
+            this.lbl_WordNumber.Size = new System.Drawing.Size(1190, 44);
             this.lbl_WordNumber.TabIndex = 1;
             this.lbl_WordNumber.Text = "0";
             this.lbl_WordNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -285,7 +291,7 @@
             this.pn_Bottom_Top.Dock = System.Windows.Forms.DockStyle.Top;
             this.pn_Bottom_Top.Location = new System.Drawing.Point(0, 0);
             this.pn_Bottom_Top.Name = "pn_Bottom_Top";
-            this.pn_Bottom_Top.Size = new System.Drawing.Size(1206, 159);
+            this.pn_Bottom_Top.Size = new System.Drawing.Size(1367, 159);
             this.pn_Bottom_Top.TabIndex = 18;
             // 
             // panel1
@@ -295,7 +301,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1206, 159);
+            this.panel1.Size = new System.Drawing.Size(1367, 159);
             this.panel1.TabIndex = 0;
             // 
             // pn_Bottom_Left
@@ -312,7 +318,7 @@
             this.pn_Bottom_Left.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.pn_Bottom_Left.Name = "pn_Bottom_Left";
             this.pn_Bottom_Left.Padding = new System.Windows.Forms.Padding(7, 12, 5, 12);
-            this.pn_Bottom_Left.Size = new System.Drawing.Size(784, 159);
+            this.pn_Bottom_Left.Size = new System.Drawing.Size(945, 159);
             this.pn_Bottom_Left.TabIndex = 28;
             // 
             // pn_UpdatePBcount
@@ -322,7 +328,7 @@
             this.pn_UpdatePBcount.Dock = System.Windows.Forms.DockStyle.Top;
             this.pn_UpdatePBcount.Location = new System.Drawing.Point(7, 106);
             this.pn_UpdatePBcount.Name = "pn_UpdatePBcount";
-            this.pn_UpdatePBcount.Size = new System.Drawing.Size(772, 47);
+            this.pn_UpdatePBcount.Size = new System.Drawing.Size(933, 47);
             this.pn_UpdatePBcount.TabIndex = 29;
             // 
             // panel3
@@ -332,7 +338,7 @@
             this.panel3.Location = new System.Drawing.Point(170, 0);
             this.panel3.Name = "panel3";
             this.panel3.Padding = new System.Windows.Forms.Padding(0, 10, 0, 2);
-            this.panel3.Size = new System.Drawing.Size(602, 47);
+            this.panel3.Size = new System.Drawing.Size(763, 47);
             this.panel3.TabIndex = 26;
             // 
             // UpdateEpochs
@@ -370,7 +376,7 @@
             this.pn_UpdateWords.Location = new System.Drawing.Point(7, 59);
             this.pn_UpdateWords.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.pn_UpdateWords.Name = "pn_UpdateWords";
-            this.pn_UpdateWords.Size = new System.Drawing.Size(772, 47);
+            this.pn_UpdateWords.Size = new System.Drawing.Size(933, 47);
             this.pn_UpdateWords.TabIndex = 15;
             // 
             // panel17
@@ -379,7 +385,7 @@
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel17.Location = new System.Drawing.Point(170, 0);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(602, 47);
+            this.panel17.Size = new System.Drawing.Size(763, 47);
             this.panel17.TabIndex = 30;
             // 
             // lbl_WordsCount
@@ -388,7 +394,7 @@
             this.lbl_WordsCount.Font = new System.Drawing.Font("Calibri", 10.2F);
             this.lbl_WordsCount.Location = new System.Drawing.Point(0, 0);
             this.lbl_WordsCount.Name = "lbl_WordsCount";
-            this.lbl_WordsCount.Size = new System.Drawing.Size(602, 47);
+            this.lbl_WordsCount.Size = new System.Drawing.Size(763, 47);
             this.lbl_WordsCount.TabIndex = 0;
             this.lbl_WordsCount.Text = "0";
             this.lbl_WordsCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -413,7 +419,7 @@
             this.pn_UpdateLine.Location = new System.Drawing.Point(7, 12);
             this.pn_UpdateLine.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.pn_UpdateLine.Name = "pn_UpdateLine";
-            this.pn_UpdateLine.Size = new System.Drawing.Size(772, 47);
+            this.pn_UpdateLine.Size = new System.Drawing.Size(933, 47);
             this.pn_UpdateLine.TabIndex = 14;
             // 
             // panel14
@@ -422,7 +428,7 @@
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel14.Location = new System.Drawing.Point(170, 0);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(602, 47);
+            this.panel14.Size = new System.Drawing.Size(763, 47);
             this.panel14.TabIndex = 29;
             // 
             // lbl_LinesCount
@@ -431,7 +437,7 @@
             this.lbl_LinesCount.Font = new System.Drawing.Font("Calibri", 10.2F);
             this.lbl_LinesCount.Location = new System.Drawing.Point(0, 0);
             this.lbl_LinesCount.Name = "lbl_LinesCount";
-            this.lbl_LinesCount.Size = new System.Drawing.Size(602, 47);
+            this.lbl_LinesCount.Size = new System.Drawing.Size(763, 47);
             this.lbl_LinesCount.TabIndex = 31;
             this.lbl_LinesCount.Text = "0 / 0";
             this.lbl_LinesCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -456,7 +462,7 @@
             this.pn_Bottom_right.Controls.Add(this.panel8);
             this.pn_Bottom_right.Controls.Add(this.btn_StartAnalysis);
             this.pn_Bottom_right.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pn_Bottom_right.Location = new System.Drawing.Point(784, 0);
+            this.pn_Bottom_right.Location = new System.Drawing.Point(945, 0);
             this.pn_Bottom_right.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.pn_Bottom_right.Name = "pn_Bottom_right";
             this.pn_Bottom_right.Padding = new System.Windows.Forms.Padding(5, 10, 10, 7);
@@ -532,154 +538,70 @@
             this.btn_StartAnalysis.UseVisualStyleBackColor = true;
             this.btn_StartAnalysis.Click += new System.EventHandler(this.btn_StartAnalysis_Click);
             // 
-            // pn_RemoveWord
+            // pn_Bottom_Bottom
             // 
-            this.pn_RemoveWord.Controls.Add(this.gb_WordsData);
-            this.pn_RemoveWord.Controls.Add(this.label8);
-            this.pn_RemoveWord.Controls.Add(this.pn_RemoveAddControl);
-            this.pn_RemoveWord.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pn_RemoveWord.Location = new System.Drawing.Point(784, 0);
-            this.pn_RemoveWord.Name = "pn_RemoveWord";
-            this.pn_RemoveWord.Size = new System.Drawing.Size(422, 494);
-            this.pn_RemoveWord.TabIndex = 10;
+            this.pn_Bottom_Bottom.Controls.Add(this.btn_Pause);
+            this.pn_Bottom_Bottom.Controls.Add(this.btn_Export);
+            this.pn_Bottom_Bottom.Controls.Add(this.btn_Import);
+            this.pn_Bottom_Bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pn_Bottom_Bottom.Location = new System.Drawing.Point(0, 740);
+            this.pn_Bottom_Bottom.Name = "pn_Bottom_Bottom";
+            this.pn_Bottom_Bottom.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.pn_Bottom_Bottom.Size = new System.Drawing.Size(1367, 44);
+            this.pn_Bottom_Bottom.TabIndex = 8;
             // 
-            // gb_WordsData
+            // btn_Pause
             // 
-            this.gb_WordsData.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gb_WordsData.Font = new System.Drawing.Font("Calibri", 10.2F);
-            this.gb_WordsData.Location = new System.Drawing.Point(0, 169);
-            this.gb_WordsData.Name = "gb_WordsData";
-            this.gb_WordsData.Padding = new System.Windows.Forms.Padding(3, 3, 10, 6);
-            this.gb_WordsData.Size = new System.Drawing.Size(422, 325);
-            this.gb_WordsData.TabIndex = 17;
-            this.gb_WordsData.TabStop = false;
-            this.gb_WordsData.Text = "Words to be removed";
+            this.btn_Pause.AutoSize = true;
+            this.btn_Pause.Location = new System.Drawing.Point(523, 4);
+            this.btn_Pause.Margin = new System.Windows.Forms.Padding(200, 3, 200, 3);
+            this.btn_Pause.Name = "btn_Pause";
+            this.btn_Pause.Size = new System.Drawing.Size(48, 34);
+            this.btn_Pause.TabIndex = 7;
+            this.btn_Pause.Text = " ▶";
+            this.btn_Pause.UseVisualStyleBackColor = true;
+            this.btn_Pause.Click += new System.EventHandler(this.btn_Pause_Click);
             // 
-            // label8
+            // btn_Export
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 136);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(0, 15);
-            this.label8.TabIndex = 9;
+            this.btn_Export.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_Export.Font = new System.Drawing.Font("Calibri", 10.2F);
+            this.btn_Export.Location = new System.Drawing.Point(1170, 3);
+            this.btn_Export.Name = "btn_Export";
+            this.btn_Export.Size = new System.Drawing.Size(187, 38);
+            this.btn_Export.TabIndex = 5;
+            this.btn_Export.Text = "DataGird Export...";
+            this.btn_Export.UseVisualStyleBackColor = true;
+            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
             // 
-            // pn_RemoveAddControl
+            // btn_Import
             // 
-            this.pn_RemoveAddControl.Controls.Add(this.panel10);
-            this.pn_RemoveAddControl.Controls.Add(this.panel4);
-            this.pn_RemoveAddControl.Controls.Add(this.label7);
-            this.pn_RemoveAddControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pn_RemoveAddControl.Location = new System.Drawing.Point(0, 0);
-            this.pn_RemoveAddControl.Name = "pn_RemoveAddControl";
-            this.pn_RemoveAddControl.Size = new System.Drawing.Size(422, 169);
-            this.pn_RemoveAddControl.TabIndex = 4;
+            this.btn_Import.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_Import.Font = new System.Drawing.Font("Calibri", 10.2F);
+            this.btn_Import.Location = new System.Drawing.Point(10, 3);
+            this.btn_Import.Name = "btn_Import";
+            this.btn_Import.Size = new System.Drawing.Size(187, 38);
+            this.btn_Import.TabIndex = 6;
+            this.btn_Import.Text = "DataGird Import...";
+            this.btn_Import.UseVisualStyleBackColor = true;
             // 
-            // panel10
+            // splitCon_TOP
             // 
-            this.panel10.Controls.Add(this.btn_SetSave);
-            this.panel10.Controls.Add(this.btn_SetLoad);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel10.Location = new System.Drawing.Point(0, 131);
-            this.panel10.Name = "panel10";
-            this.panel10.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
-            this.panel10.Size = new System.Drawing.Size(422, 38);
-            this.panel10.TabIndex = 10;
+            this.splitCon_TOP.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitCon_TOP.Location = new System.Drawing.Point(0, 0);
+            this.splitCon_TOP.Name = "splitCon_TOP";
             // 
-            // btn_SetSave
+            // splitCon_TOP.Panel1
             // 
-            this.btn_SetSave.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_SetSave.Font = new System.Drawing.Font("Calibri", 10.2F);
-            this.btn_SetSave.Location = new System.Drawing.Point(292, 0);
-            this.btn_SetSave.Name = "btn_SetSave";
-            this.btn_SetSave.Size = new System.Drawing.Size(120, 38);
-            this.btn_SetSave.TabIndex = 9;
-            this.btn_SetSave.Text = "Save..";
-            this.btn_SetSave.UseVisualStyleBackColor = true;
-            this.btn_SetSave.Click += new System.EventHandler(this.btn_SetSave_Click);
+            this.splitCon_TOP.Panel1.Controls.Add(this.tc_Pages);
             // 
-            // btn_SetLoad
+            // splitCon_TOP.Panel2
             // 
-            this.btn_SetLoad.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_SetLoad.Font = new System.Drawing.Font("Calibri", 10.2F);
-            this.btn_SetLoad.Location = new System.Drawing.Point(5, 0);
-            this.btn_SetLoad.Name = "btn_SetLoad";
-            this.btn_SetLoad.Size = new System.Drawing.Size(120, 38);
-            this.btn_SetLoad.TabIndex = 8;
-            this.btn_SetLoad.Text = "Load..";
-            this.btn_SetLoad.UseVisualStyleBackColor = true;
-            this.btn_SetLoad.Click += new System.EventHandler(this.btn_SetLoad_Click);
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.panel9);
-            this.panel4.Controls.Add(this.lbl_StatusWords);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(5, 5, 10, 0);
-            this.panel4.Size = new System.Drawing.Size(422, 104);
-            this.panel4.TabIndex = 9;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.btn_AddWords);
-            this.panel9.Controls.Add(this.tb_Word);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel9.Location = new System.Drawing.Point(5, 33);
-            this.panel9.Name = "panel9";
-            this.panel9.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.panel9.Size = new System.Drawing.Size(407, 71);
-            this.panel9.TabIndex = 9;
-            // 
-            // btn_AddWords
-            // 
-            this.btn_AddWords.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btn_AddWords.Font = new System.Drawing.Font("Calibri", 10.2F);
-            this.btn_AddWords.Location = new System.Drawing.Point(0, 34);
-            this.btn_AddWords.Name = "btn_AddWords";
-            this.btn_AddWords.Size = new System.Drawing.Size(407, 35);
-            this.btn_AddWords.TabIndex = 10;
-            this.btn_AddWords.Text = "Add";
-            this.btn_AddWords.UseVisualStyleBackColor = true;
-            this.btn_AddWords.Click += new System.EventHandler(this.btn_AddWords_Click);
-            // 
-            // tb_Word
-            // 
-            this.tb_Word.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tb_Word.Location = new System.Drawing.Point(0, 2);
-            this.tb_Word.Name = "tb_Word";
-            this.tb_Word.Size = new System.Drawing.Size(407, 25);
-            this.tb_Word.TabIndex = 9;
-            // 
-            // lbl_StatusWords
-            // 
-            this.lbl_StatusWords.AutoSize = true;
-            this.lbl_StatusWords.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbl_StatusWords.Font = new System.Drawing.Font("Calibri", 10.2F);
-            this.lbl_StatusWords.Location = new System.Drawing.Point(5, 5);
-            this.lbl_StatusWords.Name = "lbl_StatusWords";
-            this.lbl_StatusWords.Size = new System.Drawing.Size(108, 21);
-            this.lbl_StatusWords.TabIndex = 6;
-            this.lbl_StatusWords.Text = "Remove Word";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 10.2F);
-            this.label7.Location = new System.Drawing.Point(6, 107);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(107, 21);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Words Setting";
-            // 
-            // pn_View
-            // 
-            this.pn_View.Controls.Add(this.tc_Pages);
-            this.pn_View.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pn_View.Location = new System.Drawing.Point(0, 0);
-            this.pn_View.Name = "pn_View";
-            this.pn_View.Size = new System.Drawing.Size(784, 494);
-            this.pn_View.TabIndex = 11;
+            this.splitCon_TOP.Panel2.Controls.Add(this.pn_RemoveWord);
+            this.splitCon_TOP.Size = new System.Drawing.Size(1367, 494);
+            this.splitCon_TOP.SplitterDistance = 959;
+            this.splitCon_TOP.TabIndex = 10;
+            this.splitCon_TOP.Resize += new System.EventHandler(this.splitCon_TOP_Resize);
             // 
             // tc_Pages
             // 
@@ -690,9 +612,8 @@
             this.tc_Pages.Location = new System.Drawing.Point(0, 0);
             this.tc_Pages.Name = "tc_Pages";
             this.tc_Pages.SelectedIndex = 0;
-            this.tc_Pages.Size = new System.Drawing.Size(784, 494);
-            this.tc_Pages.TabIndex = 0;
-            this.tc_Pages.SelectedIndexChanged += new System.EventHandler(this.tc_Pages_SelectedIndexChanged);
+            this.tc_Pages.Size = new System.Drawing.Size(959, 494);
+            this.tc_Pages.TabIndex = 21;
             // 
             // tp_1
             // 
@@ -701,7 +622,7 @@
             this.tp_1.Location = new System.Drawing.Point(4, 30);
             this.tp_1.Name = "tp_1";
             this.tp_1.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_1.Size = new System.Drawing.Size(776, 460);
+            this.tp_1.Size = new System.Drawing.Size(951, 460);
             this.tp_1.TabIndex = 0;
             this.tp_1.Text = "Analysis";
             this.tp_1.UseVisualStyleBackColor = true;
@@ -712,7 +633,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(3, 36);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(770, 421);
+            this.panel6.Size = new System.Drawing.Size(945, 421);
             this.panel6.TabIndex = 13;
             // 
             // dgv_AnalysisResult
@@ -724,7 +645,7 @@
             this.dgv_AnalysisResult.Name = "dgv_AnalysisResult";
             this.dgv_AnalysisResult.RowHeadersWidth = 51;
             this.dgv_AnalysisResult.RowTemplate.Height = 27;
-            this.dgv_AnalysisResult.Size = new System.Drawing.Size(770, 421);
+            this.dgv_AnalysisResult.Size = new System.Drawing.Size(945, 421);
             this.dgv_AnalysisResult.TabIndex = 12;
             // 
             // panel5
@@ -736,20 +657,19 @@
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.panel5.Size = new System.Drawing.Size(770, 33);
+            this.panel5.Size = new System.Drawing.Size(945, 33);
             this.panel5.TabIndex = 12;
             // 
             // btn_Load
             // 
             this.btn_Load.Dock = System.Windows.Forms.DockStyle.Right;
             this.btn_Load.Font = new System.Drawing.Font("Calibri", 10.2F);
-            this.btn_Load.Location = new System.Drawing.Point(627, 0);
+            this.btn_Load.Location = new System.Drawing.Point(802, 0);
             this.btn_Load.Name = "btn_Load";
             this.btn_Load.Size = new System.Drawing.Size(143, 31);
             this.btn_Load.TabIndex = 13;
             this.btn_Load.Text = "Find..";
             this.btn_Load.UseVisualStyleBackColor = true;
-            this.btn_Load.Click += new System.EventHandler(this.btn_Load_Click);
             // 
             // lbl_TextFilePath
             // 
@@ -785,7 +705,7 @@
             this.tp_2.Location = new System.Drawing.Point(4, 30);
             this.tp_2.Name = "tp_2";
             this.tp_2.Padding = new System.Windows.Forms.Padding(3);
-            this.tp_2.Size = new System.Drawing.Size(776, 460);
+            this.tp_2.Size = new System.Drawing.Size(951, 460);
             this.tp_2.TabIndex = 1;
             this.tp_2.Text = "Graph";
             this.tp_2.UseVisualStyleBackColor = true;
@@ -797,13 +717,14 @@
             this.panel7.Location = new System.Drawing.Point(3, 56);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(0, 5, 0, 5);
-            this.panel7.Size = new System.Drawing.Size(770, 346);
+            this.panel7.Size = new System.Drawing.Size(945, 346);
             this.panel7.TabIndex = 6;
             // 
             // sc_Umap
             // 
             this.sc_Umap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sc_Umap.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.sc_Umap.IsSplitterFixed = true;
             this.sc_Umap.Location = new System.Drawing.Point(0, 5);
             this.sc_Umap.MinimumSize = new System.Drawing.Size(320, 0);
             this.sc_Umap.Name = "sc_Umap";
@@ -811,25 +732,22 @@
             // sc_Umap.Panel1
             // 
             this.sc_Umap.Panel1.Controls.Add(this.gb_Information);
-            this.sc_Umap.Panel1MinSize = 340;
             // 
             // sc_Umap.Panel2
             // 
             this.sc_Umap.Panel2.Controls.Add(this.gb_OuterPB);
-            this.sc_Umap.Size = new System.Drawing.Size(770, 336);
+            this.sc_Umap.Size = new System.Drawing.Size(945, 336);
             this.sc_Umap.SplitterDistance = 340;
-            this.sc_Umap.SplitterWidth = 10;
             this.sc_Umap.TabIndex = 0;
+            this.sc_Umap.Resize += new System.EventHandler(this.sc_Umap_Resize);
             // 
             // gb_Information
             // 
+            this.gb_Information.Controls.Add(this.btn_AnalyzedInformationClose);
+            this.gb_Information.Controls.Add(this.panel11);
             this.gb_Information.Controls.Add(this.ViewOptions);
-            this.gb_Information.Controls.Add(this.label5);
-            this.gb_Information.Controls.Add(this.nud_WordsCount);
             this.gb_Information.Controls.Add(this.btn_OnlyImage);
             this.gb_Information.Controls.Add(this.panel2);
-            this.gb_Information.Controls.Add(this.lbl_AllSentencesCount);
-            this.gb_Information.Controls.Add(this.lbl_AllWordsCount);
             this.gb_Information.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gb_Information.Location = new System.Drawing.Point(0, 0);
             this.gb_Information.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
@@ -840,6 +758,66 @@
             this.gb_Information.TabIndex = 21;
             this.gb_Information.TabStop = false;
             this.gb_Information.Text = "Analyzed Information";
+            // 
+            // btn_AnalyzedInformationClose
+            // 
+            this.btn_AnalyzedInformationClose.AutoSize = true;
+            this.btn_AnalyzedInformationClose.BackColor = System.Drawing.Color.DimGray;
+            this.btn_AnalyzedInformationClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btn_AnalyzedInformationClose.ForeColor = System.Drawing.Color.White;
+            this.btn_AnalyzedInformationClose.Location = new System.Drawing.Point(3, 142);
+            this.btn_AnalyzedInformationClose.Name = "btn_AnalyzedInformationClose";
+            this.btn_AnalyzedInformationClose.Size = new System.Drawing.Size(334, 32);
+            this.btn_AnalyzedInformationClose.TabIndex = 17;
+            this.btn_AnalyzedInformationClose.Text = "PANEL CLOSE ◀";
+            this.btn_AnalyzedInformationClose.UseVisualStyleBackColor = false;
+            this.btn_AnalyzedInformationClose.Click += new System.EventHandler(this.btn_AnalyzedInformationClose_Click);
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.label5);
+            this.panel11.Controls.Add(this.nud_WordsCount);
+            this.panel11.Controls.Add(this.lbl_AllSentencesCount);
+            this.panel11.Controls.Add(this.lbl_AllWordsCount);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel11.Location = new System.Drawing.Point(3, 31);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(334, 111);
+            this.panel11.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(169, 21);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Visible Count of Words";
+            // 
+            // nud_WordsCount
+            // 
+            this.nud_WordsCount.Location = new System.Drawing.Point(178, 73);
+            this.nud_WordsCount.Name = "nud_WordsCount";
+            this.nud_WordsCount.Size = new System.Drawing.Size(131, 28);
+            this.nud_WordsCount.TabIndex = 16;
+            // 
+            // lbl_AllSentencesCount
+            // 
+            this.lbl_AllSentencesCount.AutoSize = true;
+            this.lbl_AllSentencesCount.Location = new System.Drawing.Point(3, 18);
+            this.lbl_AllSentencesCount.Name = "lbl_AllSentencesCount";
+            this.lbl_AllSentencesCount.Size = new System.Drawing.Size(216, 21);
+            this.lbl_AllSentencesCount.TabIndex = 15;
+            this.lbl_AllSentencesCount.Text = "All of Sentences Count : None";
+            // 
+            // lbl_AllWordsCount
+            // 
+            this.lbl_AllWordsCount.AutoSize = true;
+            this.lbl_AllWordsCount.Location = new System.Drawing.Point(3, 47);
+            this.lbl_AllWordsCount.Name = "lbl_AllWordsCount";
+            this.lbl_AllWordsCount.Size = new System.Drawing.Size(191, 21);
+            this.lbl_AllWordsCount.TabIndex = 14;
+            this.lbl_AllWordsCount.Text = "All of Words Count : None";
             // 
             // ViewOptions
             // 
@@ -862,7 +840,6 @@
             this.rb_SelectedWords.TabIndex = 1;
             this.rb_SelectedWords.Text = "Part Words";
             this.rb_SelectedWords.UseVisualStyleBackColor = true;
-            this.rb_SelectedWords.CheckedChanged += new System.EventHandler(this.rb_SelectedWords_CheckedChanged);
             // 
             // rb_AllWords
             // 
@@ -876,23 +853,6 @@
             this.rb_AllWords.TabStop = true;
             this.rb_AllWords.Text = "All Words";
             this.rb_AllWords.UseVisualStyleBackColor = true;
-            this.rb_AllWords.CheckedChanged += new System.EventHandler(this.rb_AllWords_CheckedChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 86);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(169, 21);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Visible Count of Words";
-            // 
-            // nud_WordsCount
-            // 
-            this.nud_WordsCount.Location = new System.Drawing.Point(171, 82);
-            this.nud_WordsCount.Name = "nud_WordsCount";
-            this.nud_WordsCount.Size = new System.Drawing.Size(131, 28);
-            this.nud_WordsCount.TabIndex = 12;
             // 
             // btn_OnlyImage
             // 
@@ -946,24 +906,6 @@
             this.pb_UMAP.Size = new System.Drawing.Size(334, 10);
             this.pb_UMAP.TabIndex = 11;
             // 
-            // lbl_AllSentencesCount
-            // 
-            this.lbl_AllSentencesCount.AutoSize = true;
-            this.lbl_AllSentencesCount.Location = new System.Drawing.Point(6, 29);
-            this.lbl_AllSentencesCount.Name = "lbl_AllSentencesCount";
-            this.lbl_AllSentencesCount.Size = new System.Drawing.Size(216, 21);
-            this.lbl_AllSentencesCount.TabIndex = 5;
-            this.lbl_AllSentencesCount.Text = "All of Sentences Count : None";
-            // 
-            // lbl_AllWordsCount
-            // 
-            this.lbl_AllWordsCount.AutoSize = true;
-            this.lbl_AllWordsCount.Location = new System.Drawing.Point(6, 58);
-            this.lbl_AllWordsCount.Name = "lbl_AllWordsCount";
-            this.lbl_AllWordsCount.Size = new System.Drawing.Size(191, 21);
-            this.lbl_AllWordsCount.TabIndex = 4;
-            this.lbl_AllWordsCount.Text = "All of Words Count : None";
-            // 
             // gb_OuterPB
             // 
             this.gb_OuterPB.Controls.Add(this.pn_OuterPB);
@@ -972,7 +914,7 @@
             this.gb_OuterPB.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.gb_OuterPB.Name = "gb_OuterPB";
             this.gb_OuterPB.Padding = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.gb_OuterPB.Size = new System.Drawing.Size(420, 336);
+            this.gb_OuterPB.Size = new System.Drawing.Size(601, 336);
             this.gb_OuterPB.TabIndex = 21;
             this.gb_OuterPB.TabStop = false;
             this.gb_OuterPB.Text = "Priview UMAP";
@@ -985,7 +927,7 @@
             this.pn_OuterPB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_OuterPB.Location = new System.Drawing.Point(3, 31);
             this.pn_OuterPB.Name = "pn_OuterPB";
-            this.pn_OuterPB.Size = new System.Drawing.Size(414, 302);
+            this.pn_OuterPB.Size = new System.Drawing.Size(595, 302);
             this.pn_OuterPB.TabIndex = 0;
             this.pn_OuterPB.Resize += new System.EventHandler(this.pn_OuterPB_Resize);
             // 
@@ -998,9 +940,6 @@
             this.pb_UMAPImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_UMAPImage.TabIndex = 19;
             this.pb_UMAPImage.TabStop = false;
-            this.pb_UMAPImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pb_UMAPImage_MouseDown);
-            this.pb_UMAPImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pb_UMAPImage_MouseMove);
-            this.pb_UMAPImage.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pb_UMAPImage_MouseUp);
             // 
             // groupBox2
             // 
@@ -1010,7 +949,7 @@
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(770, 53);
+            this.groupBox2.Size = new System.Drawing.Size(945, 53);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Load Data Type";
@@ -1029,13 +968,12 @@
             // btn_LoadNewText
             // 
             this.btn_LoadNewText.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_LoadNewText.Location = new System.Drawing.Point(621, 24);
+            this.btn_LoadNewText.Location = new System.Drawing.Point(796, 24);
             this.btn_LoadNewText.Name = "btn_LoadNewText";
             this.btn_LoadNewText.Size = new System.Drawing.Size(146, 26);
             this.btn_LoadNewText.TabIndex = 11;
             this.btn_LoadNewText.Text = "Load Text File";
             this.btn_LoadNewText.UseVisualStyleBackColor = true;
-            this.btn_LoadNewText.Click += new System.EventHandler(this.btn_LoadNewText_Click);
             // 
             // groupBox1
             // 
@@ -1045,7 +983,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(3, 402);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(770, 55);
+            this.groupBox1.Size = new System.Drawing.Size(945, 55);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Data Save Type";
@@ -1053,13 +991,12 @@
             // btn_SaveData
             // 
             this.btn_SaveData.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_SaveData.Location = new System.Drawing.Point(665, 24);
+            this.btn_SaveData.Location = new System.Drawing.Point(840, 24);
             this.btn_SaveData.Name = "btn_SaveData";
             this.btn_SaveData.Size = new System.Drawing.Size(102, 28);
             this.btn_SaveData.TabIndex = 8;
             this.btn_SaveData.Text = "Save";
             this.btn_SaveData.UseVisualStyleBackColor = true;
-            this.btn_SaveData.Click += new System.EventHandler(this.btn_SaveData_Click);
             // 
             // rb_UMAP1
             // 
@@ -1085,67 +1022,155 @@
             this.rb_UCINET.Text = "For UCINET";
             this.rb_UCINET.UseVisualStyleBackColor = true;
             // 
-            // pn_Bottom_Bottom
+            // pn_RemoveWord
             // 
-            this.pn_Bottom_Bottom.Controls.Add(this.btn_Pause);
-            this.pn_Bottom_Bottom.Controls.Add(this.btn_Export);
-            this.pn_Bottom_Bottom.Controls.Add(this.btn_Import);
-            this.pn_Bottom_Bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pn_Bottom_Bottom.Location = new System.Drawing.Point(0, 740);
-            this.pn_Bottom_Bottom.Name = "pn_Bottom_Bottom";
-            this.pn_Bottom_Bottom.Padding = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.pn_Bottom_Bottom.Size = new System.Drawing.Size(1206, 44);
-            this.pn_Bottom_Bottom.TabIndex = 8;
+            this.pn_RemoveWord.Controls.Add(this.gb_WordsData);
+            this.pn_RemoveWord.Controls.Add(this.label8);
+            this.pn_RemoveWord.Controls.Add(this.pn_RemoveAddControl);
+            this.pn_RemoveWord.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pn_RemoveWord.Location = new System.Drawing.Point(0, 0);
+            this.pn_RemoveWord.Name = "pn_RemoveWord";
+            this.pn_RemoveWord.Size = new System.Drawing.Size(404, 494);
+            this.pn_RemoveWord.TabIndex = 19;
             // 
-            // btn_Pause
+            // gb_WordsData
             // 
-            this.btn_Pause.AutoSize = true;
-            this.btn_Pause.Location = new System.Drawing.Point(523, 4);
-            this.btn_Pause.Margin = new System.Windows.Forms.Padding(200, 3, 200, 3);
-            this.btn_Pause.Name = "btn_Pause";
-            this.btn_Pause.Size = new System.Drawing.Size(48, 34);
-            this.btn_Pause.TabIndex = 7;
-            this.btn_Pause.Text = " ▶";
-            this.btn_Pause.UseVisualStyleBackColor = true;
-            this.btn_Pause.Click += new System.EventHandler(this.btn_Pause_Click);
+            this.gb_WordsData.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gb_WordsData.Font = new System.Drawing.Font("Calibri", 10.2F);
+            this.gb_WordsData.Location = new System.Drawing.Point(0, 169);
+            this.gb_WordsData.Name = "gb_WordsData";
+            this.gb_WordsData.Padding = new System.Windows.Forms.Padding(3, 3, 10, 6);
+            this.gb_WordsData.Size = new System.Drawing.Size(404, 325);
+            this.gb_WordsData.TabIndex = 17;
+            this.gb_WordsData.TabStop = false;
+            this.gb_WordsData.Text = "Words to be removed";
             // 
-            // btn_Export
+            // label8
             // 
-            this.btn_Export.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_Export.Font = new System.Drawing.Font("Calibri", 10.2F);
-            this.btn_Export.Location = new System.Drawing.Point(1009, 3);
-            this.btn_Export.Name = "btn_Export";
-            this.btn_Export.Size = new System.Drawing.Size(187, 38);
-            this.btn_Export.TabIndex = 5;
-            this.btn_Export.Text = "DataGird Export...";
-            this.btn_Export.UseVisualStyleBackColor = true;
-            this.btn_Export.Click += new System.EventHandler(this.btn_Export_Click);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 136);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(0, 15);
+            this.label8.TabIndex = 9;
             // 
-            // btn_Import
+            // pn_RemoveAddControl
             // 
-            this.btn_Import.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_Import.Font = new System.Drawing.Font("Calibri", 10.2F);
-            this.btn_Import.Location = new System.Drawing.Point(10, 3);
-            this.btn_Import.Name = "btn_Import";
-            this.btn_Import.Size = new System.Drawing.Size(187, 38);
-            this.btn_Import.TabIndex = 6;
-            this.btn_Import.Text = "DataGird Import...";
-            this.btn_Import.UseVisualStyleBackColor = true;
+            this.pn_RemoveAddControl.Controls.Add(this.panel10);
+            this.pn_RemoveAddControl.Controls.Add(this.panel4);
+            this.pn_RemoveAddControl.Controls.Add(this.label7);
+            this.pn_RemoveAddControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pn_RemoveAddControl.Location = new System.Drawing.Point(0, 0);
+            this.pn_RemoveAddControl.Name = "pn_RemoveAddControl";
+            this.pn_RemoveAddControl.Size = new System.Drawing.Size(404, 169);
+            this.pn_RemoveAddControl.TabIndex = 4;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.btn_SetSave);
+            this.panel10.Controls.Add(this.btn_SetLoad);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel10.Location = new System.Drawing.Point(0, 131);
+            this.panel10.Name = "panel10";
+            this.panel10.Padding = new System.Windows.Forms.Padding(5, 0, 10, 0);
+            this.panel10.Size = new System.Drawing.Size(404, 38);
+            this.panel10.TabIndex = 10;
+            // 
+            // btn_SetSave
+            // 
+            this.btn_SetSave.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_SetSave.Font = new System.Drawing.Font("Calibri", 10.2F);
+            this.btn_SetSave.Location = new System.Drawing.Point(274, 0);
+            this.btn_SetSave.Name = "btn_SetSave";
+            this.btn_SetSave.Size = new System.Drawing.Size(120, 38);
+            this.btn_SetSave.TabIndex = 9;
+            this.btn_SetSave.Text = "Save..";
+            this.btn_SetSave.UseVisualStyleBackColor = true;
+            // 
+            // btn_SetLoad
+            // 
+            this.btn_SetLoad.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_SetLoad.Font = new System.Drawing.Font("Calibri", 10.2F);
+            this.btn_SetLoad.Location = new System.Drawing.Point(5, 0);
+            this.btn_SetLoad.Name = "btn_SetLoad";
+            this.btn_SetLoad.Size = new System.Drawing.Size(120, 38);
+            this.btn_SetLoad.TabIndex = 8;
+            this.btn_SetLoad.Text = "Load..";
+            this.btn_SetLoad.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.panel9);
+            this.panel4.Controls.Add(this.lbl_StatusWords);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(5, 5, 10, 0);
+            this.panel4.Size = new System.Drawing.Size(404, 104);
+            this.panel4.TabIndex = 9;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.btn_AddWords);
+            this.panel9.Controls.Add(this.tb_Word);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel9.Location = new System.Drawing.Point(5, 33);
+            this.panel9.Name = "panel9";
+            this.panel9.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.panel9.Size = new System.Drawing.Size(389, 71);
+            this.panel9.TabIndex = 9;
+            // 
+            // btn_AddWords
+            // 
+            this.btn_AddWords.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_AddWords.Font = new System.Drawing.Font("Calibri", 10.2F);
+            this.btn_AddWords.Location = new System.Drawing.Point(0, 34);
+            this.btn_AddWords.Name = "btn_AddWords";
+            this.btn_AddWords.Size = new System.Drawing.Size(389, 35);
+            this.btn_AddWords.TabIndex = 10;
+            this.btn_AddWords.Text = "Add";
+            this.btn_AddWords.UseVisualStyleBackColor = true;
+            // 
+            // tb_Word
+            // 
+            this.tb_Word.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tb_Word.Location = new System.Drawing.Point(0, 2);
+            this.tb_Word.Name = "tb_Word";
+            this.tb_Word.Size = new System.Drawing.Size(389, 25);
+            this.tb_Word.TabIndex = 9;
+            // 
+            // lbl_StatusWords
+            // 
+            this.lbl_StatusWords.AutoSize = true;
+            this.lbl_StatusWords.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbl_StatusWords.Font = new System.Drawing.Font("Calibri", 10.2F);
+            this.lbl_StatusWords.Location = new System.Drawing.Point(5, 5);
+            this.lbl_StatusWords.Name = "lbl_StatusWords";
+            this.lbl_StatusWords.Size = new System.Drawing.Size(108, 21);
+            this.lbl_StatusWords.TabIndex = 6;
+            this.lbl_StatusWords.Text = "Remove Word";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 10.2F);
+            this.label7.Location = new System.Drawing.Point(6, 107);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(107, 21);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "Words Setting";
             // 
             // AnalysisForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1206, 784);
-            this.Controls.Add(this.pn_View);
-            this.Controls.Add(this.pn_RemoveWord);
+            this.ClientSize = new System.Drawing.Size(1367, 784);
+            this.Controls.Add(this.splitCon_TOP);
             this.Controls.Add(this.pn_Bottom2);
             this.Controls.Add(this.pn_Bottom_Bottom);
             this.DoubleBuffered = true;
             this.Name = "AnalysisForm";
             this.Text = "Analysis Program";
             this.Load += new System.EventHandler(this.AnalysisForm_Load);
-            this.Resize += new System.EventHandler(this.AnalysisForm_Resize);
             this.pn_Bottom2.ResumeLayout(false);
             this.pn_Bottom_Mid.ResumeLayout(false);
             this.pn_Update.ResumeLayout(false);
@@ -1167,16 +1192,12 @@
             this.pn_DeleteCount.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DeleteEpochs)).EndInit();
             this.panel8.ResumeLayout(false);
-            this.pn_RemoveWord.ResumeLayout(false);
-            this.pn_RemoveWord.PerformLayout();
-            this.pn_RemoveAddControl.ResumeLayout(false);
-            this.pn_RemoveAddControl.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.pn_View.ResumeLayout(false);
+            this.pn_Bottom_Bottom.ResumeLayout(false);
+            this.pn_Bottom_Bottom.PerformLayout();
+            this.splitCon_TOP.Panel1.ResumeLayout(false);
+            this.splitCon_TOP.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitCon_TOP)).EndInit();
+            this.splitCon_TOP.ResumeLayout(false);
             this.tc_Pages.ResumeLayout(false);
             this.tp_1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -1191,9 +1212,11 @@
             this.sc_Umap.ResumeLayout(false);
             this.gb_Information.ResumeLayout(false);
             this.gb_Information.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nud_WordsCount)).EndInit();
             this.ViewOptions.ResumeLayout(false);
             this.ViewOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nud_WordsCount)).EndInit();
             this.panel2.ResumeLayout(false);
             this.gb_OuterPB.ResumeLayout(false);
             this.pn_OuterPB.ResumeLayout(false);
@@ -1202,37 +1225,21 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.pn_Bottom_Bottom.ResumeLayout(false);
-            this.pn_Bottom_Bottom.PerformLayout();
+            this.pn_RemoveWord.ResumeLayout(false);
+            this.pn_RemoveWord.PerformLayout();
+            this.pn_RemoveAddControl.ResumeLayout(false);
+            this.pn_RemoveAddControl.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
         #endregion
         private System.Windows.Forms.Panel pn_Bottom2;
-        private System.Windows.Forms.Panel pn_RemoveWord;
-        private System.Windows.Forms.Panel pn_RemoveAddControl;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel pn_View;
         private System.Windows.Forms.Panel pn_Bottom_Top;
-        private System.Windows.Forms.TabControl tc_Pages;
-        private System.Windows.Forms.TabPage tp_1;
-        private System.Windows.Forms.TabPage tp_2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btn_SaveData;
-        private System.Windows.Forms.RadioButton rb_UMAP1;
-        private System.Windows.Forms.RadioButton rb_UCINET;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btn_LoadNewText;
-        private System.Windows.Forms.CheckBox cb_UseAnalysisFile;
-        private System.Windows.Forms.GroupBox gb_WordsData;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button btn_Load;
-        private System.Windows.Forms.Label lbl_TextFilePath;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.DataGridView dgv_AnalysisResult;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel pn_Bottom_Bottom;
         private System.Windows.Forms.Button btn_Pause;
         private System.Windows.Forms.Button btn_Export;
@@ -1268,31 +1275,56 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel pn_UpdatePB;
         private System.Windows.Forms.ProgressBar pb_Update;
+        private System.Windows.Forms.SplitContainer splitCon_TOP;
+        private System.Windows.Forms.TabControl tc_Pages;
+        private System.Windows.Forms.TabPage tp_1;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.DataGridView dgv_AnalysisResult;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button btn_Load;
+        private System.Windows.Forms.Label lbl_TextFilePath;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tp_2;
+        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.SplitContainer sc_Umap;
         private System.Windows.Forms.GroupBox gb_Information;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown nud_WordsCount;
+        private System.Windows.Forms.Panel ViewOptions;
+        private System.Windows.Forms.RadioButton rb_SelectedWords;
+        private System.Windows.Forms.RadioButton rb_AllWords;
         private System.Windows.Forms.Button btn_OnlyImage;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbl_ReadingStatus;
         private System.Windows.Forms.ProgressBar pb_ReadFile;
         private System.Windows.Forms.ProgressBar pb_UMAP;
-        private System.Windows.Forms.Label lbl_AllSentencesCount;
-        private System.Windows.Forms.Label lbl_AllWordsCount;
         private System.Windows.Forms.GroupBox gb_OuterPB;
         private System.Windows.Forms.Panel pn_OuterPB;
         private System.Windows.Forms.PictureBox pb_UMAPImage;
-        private System.Windows.Forms.Panel ViewOptions;
-        private System.Windows.Forms.RadioButton rb_SelectedWords;
-        private System.Windows.Forms.RadioButton rb_AllWords;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox cb_UseAnalysisFile;
+        private System.Windows.Forms.Button btn_LoadNewText;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_SaveData;
+        private System.Windows.Forms.RadioButton rb_UMAP1;
+        private System.Windows.Forms.RadioButton rb_UCINET;
+        private System.Windows.Forms.Panel pn_RemoveWord;
+        private System.Windows.Forms.GroupBox gb_WordsData;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel pn_RemoveAddControl;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Button btn_SetSave;
+        private System.Windows.Forms.Button btn_SetLoad;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Button btn_AddWords;
         private System.Windows.Forms.TextBox tb_Word;
         private System.Windows.Forms.Label lbl_StatusWords;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Button btn_SetSave;
-        private System.Windows.Forms.Button btn_SetLoad;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btn_AnalyzedInformationClose;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.NumericUpDown nud_WordsCount;
+        private System.Windows.Forms.Label lbl_AllSentencesCount;
+        private System.Windows.Forms.Label lbl_AllWordsCount;
     }
 }
 

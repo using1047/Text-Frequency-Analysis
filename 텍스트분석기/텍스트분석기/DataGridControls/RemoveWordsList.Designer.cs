@@ -99,7 +99,7 @@ namespace 텍스트분석기
         #endregion
 
         private ComponentFactory.Krypton.Toolkit.KryptonPanel OuterPanel;
-        private JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.KryptonOutlookGrid DataGrid;
         private JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.KryptonOutlookGridGroupBox GroupBox;
+        private JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.KryptonOutlookGrid DataGrid;
     }
 }

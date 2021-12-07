@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OutlookGrid V="1">
+  <GroupBox>True</GroupBox>
+  <HideColumnOnGrouping>False</HideColumnOnGrouping>
+  <Columns>
+    <Column>
+      <Name>ColumnNumber</Name>
+      <GroupingType>
+        <Name>JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.OutlookGridDefaultGroup, JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid, Version=1.6.1.0, Culture=neutral, PublicKeyToken=null</Name>
+        <OneItemText>1 item</OneItemText>
+        <XXXItemsText> items</XXXItemsText>
+        <SortBySummaryCount>False</SortBySummaryCount>
+        <ItemsComparer />
+      </GroupingType>
+      <SortDirection>Ascending</SortDirection>
+      <GroupIndex>-1</GroupIndex>
+      <SortIndex>-1</SortIndex>
+      <Visible>True</Visible>
+      <Width>80</Width>
+      <Index>0</Index>
+      <DisplayIndex>0</DisplayIndex>
+    </Column>
+    <Column>
+      <Name>ColumnWord</Name>
+      <GroupingType>
+        <Name>JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.OutlookGridAlphabeticGroup, JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid, Version=1.6.1.0, Culture=neutral, PublicKeyToken=null</Name>
+        <OneItemText>1 item</OneItemText>
+        <XXXItemsText> items</XXXItemsText>
+        <SortBySummaryCount>False</SortBySummaryCount>
+        <ItemsComparer />
+      </GroupingType>
+      <SortDirection>None</SortDirection>
+      <GroupIndex>-1</GroupIndex>
+      <SortIndex>-1</SortIndex>
+      <Visible>True</Visible>
+      <Width>184</Width>
+      <Index>1</Index>
+      <DisplayIndex>1</DisplayIndex>
+    </Column>
+    <Column>
+      <Name>ColumnStatus</Name>
+      <GroupingType>
+        <Name>JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.OutlookGridDefaultGroup, JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid, Version=1.6.1.0, Culture=neutral, PublicKeyToken=null</Name>
+        <OneItemText>1 item</OneItemText>
+        <XXXItemsText> items</XXXItemsText>
+        <SortBySummaryCount>False</SortBySummaryCount>
+        <ItemsComparer />
+      </GroupingType>
+      <SortDirection>None</SortDirection>
+      <GroupIndex>-1</GroupIndex>
+      <SortIndex>-1</SortIndex>
+      <Visible>True</Visible>
+      <Width>68</Width>
+      <Index>2</Index>
+      <DisplayIndex>2</DisplayIndex>
+    </Column>
+    <Column>
+      <Name>ColumnVector</Name>
+      <GroupingType>
+        <Name>JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.OutlookGridAlphabeticGroup, JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid, Version=1.6.1.0, Culture=neutral, PublicKeyToken=null</Name>
+        <OneItemText>1 item</OneItemText>
+        <XXXItemsText> items</XXXItemsText>
+        <SortBySummaryCount>False</SortBySummaryCount>
+        <ItemsComparer />
+      </GroupingType>
+      <SortDirection>None</SortDirection>
+      <GroupIndex>-1</GroupIndex>
+      <SortIndex>-1</SortIndex>
+      <Visible>True</Visible>
+      <Width>89</Width>
+      <Index>3</Index>
+      <DisplayIndex>3</DisplayIndex>
+    </Column>
+  </Columns>
+  <ConditionalFormatting />
+</OutlookGrid>

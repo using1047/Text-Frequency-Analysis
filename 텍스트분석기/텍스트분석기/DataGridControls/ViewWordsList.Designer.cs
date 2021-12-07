@@ -46,7 +46,6 @@ namespace 텍스트분석기
             this.OuterPanel.Name = "OuterPanel";
             this.OuterPanel.Size = new System.Drawing.Size(275, 306);
             this.OuterPanel.TabIndex = 0;
-            this.OuterPanel.Resize += new System.EventHandler(this.OuterPanel_Resize);
             // 
             // DataGrid
             // 
@@ -70,7 +69,6 @@ namespace 텍스트분석기
             this.DataGrid.ShowLines = false;
             this.DataGrid.Size = new System.Drawing.Size(275, 306);
             this.DataGrid.TabIndex = 0;
-            this.DataGrid.Resize += new System.EventHandler(this.DataGrid_Resize);
             // 
             // GroupBox
             // 

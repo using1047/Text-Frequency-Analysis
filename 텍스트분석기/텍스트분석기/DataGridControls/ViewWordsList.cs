@@ -2,12 +2,6 @@
 using JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.CustomColumns;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -15,6 +9,22 @@ namespace 텍스트분석기
 {
     public partial class ViewWordsList : UserControl
     {
+        DataGridSetupViewWords setup = new DataGridSetupViewWords();
+
+        int RowsCount = 1;
+
+        private string _FilePath = "";
+        public string FilePath
+        {
+            get { return FilePath; }
+            set { _FilePath = value; }
+        }
+
+        public void Reload()
+        {
+            LoadData(_FilePath);
+        }
+
         public ViewWordsList()
         {
             InitializeComponent();
@@ -24,13 +34,15 @@ namespace 텍스트분석기
         {
             DataGrid.RegisterGroupBoxEvents();
 
-            DataGridSetupViewWords setup = new DataGridSetupViewWords();
             setup.SetupDataGridView(this.DataGrid, true);
 
             DataGrid.ShowLines = true;
-            LoadData();
+            LoadData("Data/ViewWordsListSampleData.xml");
+
+            DataGrid.AutoResizeColumns();
         }
-        private void LoadData()
+
+        private void LoadData(string file)
         {
             OutlookGridRow row = new OutlookGridRow();
             List<OutlookGridRow> I = new List<OutlookGridRow>();
@@ -40,7 +52,7 @@ namespace 텍스트분석기
             DataGrid.FillMode = FillMode.GroupsAndNodes;
 
             XmlDocument doc = new XmlDocument();
-            doc.Load("Data/ViewWordsListData.xml");
+            doc.Load(file);
 
             foreach (XmlNode Word in doc.SelectNodes("//ViewWordsListData"))
             {
@@ -71,15 +83,59 @@ namespace 텍스트분석기
             DataGrid.Fill();
         }
 
-        private void OuterPanel_Resize(object sender, EventArgs e)
+        // 여기서부터 기능단
+
+        public void Save()
         {
-            DataGrid.Width = this.OuterPanel.Width;
-            DataGrid.Height = this.OuterPanel.Height;
+            DataGrid.PersistConfiguration(_FilePath, 1.ToString());
         }
 
-        private void DataGrid_Resize(object sender, EventArgs e)
+        public bool PersistModified = false;
+
+        public void Add(object[] parameter)
         {
-            MessageBox.Show(DataGrid.Width.ToString());
+            if(!PersistModified) DataGrid.Rows.Clear();
+            if (parameter.Length != setup.ColumnsCount)
+            {
+                MessageBox.Show("데이터 개수와 Columns 개수가 맞지 않습니다.");
+            }
+            else
+            {
+                try
+                {
+                    string[] Values = new string[4];
+
+                    // Word
+                    Values[0] = parameter[0].ToString();
+                    // Status
+                    Values[1] = parameter[1].ToString();
+                    // Vector X
+                    Values[2] = parameter[2].ToString();
+                    // Vector Y
+                    Values[3] = parameter[3].ToString();
+
+                    if(DataGrid.InvokeRequired)
+                    {
+                        DataGrid.Invoke(new Action(delegate
+                        {
+                            DataGrid.Rows.Add(RowsCount, Values[0], Values[1], "None", "None");
+                            OutlookGridRow row = (OutlookGridRow)DataGrid.Rows[0];
+                            DataGrid.InternalRows.Add(row);
+                            DataGrid.Rows.RemoveAt(0);
+                            Save();
+                        }));
+                    }
+                    else
+                    {
+                        DataGrid.Rows.Add(RowsCount, Values[0], Values[1], "None", "None");
+                        Save();
+                    }
+                    
+                    RowsCount++;
+                    PersistModified = true;
+                }
+                catch { }
+            }
         }
     }
 }

@@ -2,12 +2,6 @@
 using JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.CustomColumns;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -16,6 +10,20 @@ namespace 텍스트분석기
     public partial class RemoveWordsList : UserControl
     {
         DataGridSetupRemoveWords setup = new DataGridSetupRemoveWords();
+
+        int RowsCount = 1;
+
+        private string _FilePath = "";
+        public string FilePath
+        {
+            get { return _FilePath; }
+            set { _FilePath = value; }
+        }
+
+        public void Reload()
+        {
+            LoadData(_FilePath);
+        }
 
         public RemoveWordsList()
         {
@@ -29,10 +37,12 @@ namespace 텍스트분석기
             setup.SetupDataGridView(this.DataGrid, true);
 
             DataGrid.ShowLines = true;
-            LoadData();
+            LoadData("Data/RemoveWordsListSampleData.xml");
+
+            DataGrid.AutoResizeColumns();
         }
 
-        private void LoadData()
+        private void LoadData(string file)
         {
             OutlookGridRow row = new OutlookGridRow();
             List<OutlookGridRow> I = new List<OutlookGridRow>();
@@ -42,7 +52,7 @@ namespace 텍스트분석기
             DataGrid.FillMode = FillMode.GroupsAndNodes;
 
             XmlDocument doc = new XmlDocument();
-            doc.Load("Data/RemoveWordsListData.xml");
+            doc.Load(file);
 
             foreach (XmlNode Word in doc.SelectNodes("//RemoveWordsListData"))
             {
@@ -69,6 +79,39 @@ namespace 텍스트분석기
             DataGrid.AssignRows(I);
             DataGrid.ForceRefreshGroupBox();
             DataGrid.Fill();
+        }
+
+        // 여기서부터 기능단
+
+        public bool PersistModified = false;
+
+        public void Add(object[] parameter)
+        {
+            if (!PersistModified) DataGrid.Rows.Clear();
+            if (parameter.Length != setup.ColumnsCount - 1)
+            {
+                MessageBox.Show("데이터 개수와 Columns 개수가 맞지 않습니다.");
+            }
+            else
+            {
+                try
+                {
+                    string[] Values = new string[5];
+
+                    Values[0] = parameter[0].ToString();
+                    Values[1] = parameter[1].ToString();
+
+                    foreach(DataGridViewRow Row in DataGrid.Rows)
+                    {
+                        if(Row.Cells[1].Value.ToString() == Values[0]) return;
+                    }
+
+                    DataGrid.Rows.Add(RowsCount, Values[0], Values[1]);
+                    RowsCount++;
+                    PersistModified = true;
+                }
+                catch { }
+            }
         }
     }
 }

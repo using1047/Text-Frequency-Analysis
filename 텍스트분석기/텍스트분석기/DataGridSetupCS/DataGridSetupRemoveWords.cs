@@ -17,23 +17,7 @@ namespace 텍스트분석기
 {
     public class DataGridSetupRemoveWords
     {
-        private int[] ColumnWidth = new int[3] { 50, 50, 50 };
-
-        public int Col_1
-        {
-            get { return ColumnWidth[0]; }
-            set { ColumnWidth[0] = value; }
-        }
-        public int Col_2
-        {
-            get { return ColumnWidth[1]; }
-            set { ColumnWidth[1] = value; }
-        }
-        public int Col_3
-        {
-            get { return ColumnWidth[2]; }
-            set { ColumnWidth[2] = value; }
-        }
+        public readonly int ColumnsCount = 3;
 
         private RemoveWordListGridColumn[] activateColumns;
 
@@ -193,7 +177,7 @@ namespace 텍스트분석기
                     column.HeaderText = "Number";
                     column.Name = "ColumnNumber";
                     column.SortMode = DataGridViewColumnSortMode.Programmatic;
-                    column.Width = ColumnWidth[0];
+                    column.Width = 50;
                     return column;
 
                 // 컬럼이 Word 라면
@@ -202,7 +186,7 @@ namespace 텍스트분석기
                     column.HeaderText = "Word";
                     column.Name = "ColumnWord";
                     column.SortMode = DataGridViewColumnSortMode.Programmatic;
-                    column.Width = ColumnWidth[1];
+                    column.Width = 50;
                     return column;
 
                 // 컬럼이 Status 라면
@@ -211,7 +195,7 @@ namespace 텍스트분석기
                     column.HeaderText = "Status";
                     column.Name = "ColumnStatus";
                     column.SortMode = DataGridViewColumnSortMode.Programmatic;
-                    column.Width = ColumnWidth[2];
+                    column.Width = 50;
                     return column;
 
                  default:

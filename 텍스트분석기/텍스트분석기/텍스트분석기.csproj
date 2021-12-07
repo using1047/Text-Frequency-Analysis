@@ -123,6 +123,7 @@
     <Compile Include="DataGridControls\ViewWordsList.Designer.cs">
       <DependentUpon>ViewWordsList.cs</DependentUpon>
     </Compile>
+    <Compile Include="SaveXMLData.cs" />
     <EmbeddedResource Include="AnalysisMain.resx">
       <DependentUpon>AnalysisMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,10 +176,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\RemoveWordsListData.xml">
+    <Content Include="Data\RemoveWordsListSampleData.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\ViewWordsListData.xml">
+    <Content Include="Data\ViewWordsListSampleData.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Waiting.jpg">
