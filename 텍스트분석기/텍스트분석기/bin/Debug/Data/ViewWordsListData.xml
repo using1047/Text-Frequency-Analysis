@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="yes"?>
+<DocumentElement>
+  <ViewWordsListData>
+    <Number>1</Number>
+    <Word>Vins et alcools Chevalier</Word>
+    <Status>59 rue de l'Abbaye</Status>
+    <Vector>R</Vector>
+  </ViewWordsListData>
+
+  <ViewWordsListData>
+    <Number>2</Number>
+    <Word>Vins et alcools Chevalier</Word>
+    <Status>59 rue de l'Abbaye</Status>
+    <Vector>R</Vector>
+  </ViewWordsListData>
+
+  <ViewWordsListData>
+    <Number>3</Number>
+    <Word>a</Word>
+    <Status>59 rue de l'Abbaye</Status>
+    <Vector>R</Vector>
+  </ViewWordsListData>
+
+  <ViewWordsListData>
+    <Number>4</Number>
+    <Word>Vins et alcools Chevalier</Word>
+    <Status>59 rue de l'Abbaye</Status>
+    <Vector>Reims</Vector>
+  </ViewWordsListData>
+
+
+</DocumentElement>

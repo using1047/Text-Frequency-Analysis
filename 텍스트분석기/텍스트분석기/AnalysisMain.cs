@@ -16,6 +16,10 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using ComponentFactory.Krypton.Toolkit;
+using JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid;
+using System.Xml;
+using JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.CustomColumns;
 
 namespace 텍스트분석기
 {
@@ -27,6 +31,12 @@ namespace 텍스트분석기
 
         bool Pause = false;
         ManualResetEvent PauseEvent = new ManualResetEvent(true);
+
+        List<DataGridViewRow> SaveAnalysisList = new List<DataGridViewRow>();
+        List<DataGridViewRow> SaveGraphList = new List<DataGridViewRow>();
+
+        RemoveWordsList RemoveWordsList = new RemoveWordsList();
+        ViewWordsList ViewWordsList = new ViewWordsList();
 
         /// <summary>
         /// Form 생성시
@@ -48,15 +58,6 @@ namespace 텍스트분석기
                 ;
             dgv_AnalysisResult.AllowUserToAddRows = false;
             dgv_AnalysisResult.RowHeadersVisible = false;
-
-            dgv_WordList.Columns.Add("Word", "Word");
-            dgv_WordList.Columns.Add("Status", "Status");
-
-            dgv_WordList.Columns["Word"].Width = dgv_WordList.Width / 2 - 10;
-            dgv_WordList.Columns["Status"].Width = dgv_WordList.Width / 2 - 42;
-
-            dgv_WordList.AllowUserToAddRows = false;
-            dgv_WordList.RowHeadersVisible = false;
 
             btn_Pause.Left = (pn_Bottom_Bottom.Width - btn_Pause.Width) / 2;
 
@@ -202,14 +203,15 @@ namespace 텍스트분석기
                 FileStream fileStream = new FileStream(sfd.FileName, FileMode.Create, FileAccess.Write);
                 StreamWriter sw = new StreamWriter(fileStream);
 
-                for (int Row = 0; Row < dgv_WordList.Rows.Count; Row++)
+                /*
+                for(int Row = 0;  Row < OutlookGrid_1.Rows.Count; Row++)
                 {
-                    if (dgv_WordList.Rows[Row].Cells[0].Value != null)
+                    if(OutlookGrid_1.Rows[Row].Cells[1].Value != null)
                     {
-                        sw.WriteLine(dgv_WordList.Rows[Row].Cells[0].Value);
+                        sw.WriteLine(OutlookGrid_1.Rows[Row].Cells[1].Value);
                     }
                 }
-
+                */
                 sw.Close();
             }
         }
@@ -229,13 +231,20 @@ namespace 텍스트분석기
                 {
                     using (StreamReader sr = new StreamReader(ofd.FileName, Encoding.UTF8))
                     {
-                        dgv_WordList.Rows.Clear();
+                        /*
+                        OutlookGrid_1.Rows.Clear();
 
+                        int Number = 1;
                         while (!sr.EndOfStream)
                         {
                             string Word = sr.ReadLine();
-                            if (Word != "") dgv_WordList.Rows.Add(Word, false.ToString());
-                        }
+                            if (Word != "")
+                            {
+                                OutlookGrid_1.Rows.Add(Number, Word, "False");
+                                Number++;
+                            }
+                        }*/
+
                     }
                 }
             }
@@ -263,22 +272,75 @@ namespace 텍스트분석기
         /// <param name="e"></param>
         private void btn_AddWords_Click(object sender, EventArgs e)
         {
-            if (tb_RemoveWord.Text != "")
+            if (tb_Word.Text != "")
             {
+                /*
+                bool check = false;
+                foreach(DataGridViewRow Row in OutlookGrid_1.Rows)
+                {
+                    if (Row.Cells[1].Value != null)
+                        if (Row.Cells[1].Value.ToString() == tb_Word.Text) check = true;                   
+                }
+                if(!check)
+                {
+                    foreach(DataGridViewRow Row in OutlookGrid_1.Rows)
+                    {
+                        Row.Cells[0].Value = int.Parse(Row.Cells[0].Value.ToString()) + 1;
+                    }
+                    if (tc_Pages.SelectedIndex == 0) OutlookGrid_1.Rows.Add(1, tb_Word.Text, "False");
+                    else OutlookGrid_1.Rows.Add(1, tb_Word.Text, "Not View");
+                }
+                */
+
+                /*
                 bool check = false;
                 foreach (DataGridViewRow Row in dgv_WordList.Rows)
                 {
                     if (Row.Cells[0].Value != null)
                     {
-                        if (Row.Cells[0].Value.ToString() == tb_RemoveWord.Text) check = true;
+                        if (Row.Cells[0].Value.ToString() == tb_Word.Text) check = true;
                     }
                 }
                 if (!check)
                 {
-                    dgv_WordList.Rows.Add(tb_RemoveWord.Text, false.ToString());
-                    tb_RemoveWord.Text = "";
+                    if (tc_Pages.SelectedIndex == 0) dgv_WordList.Rows.Add(tb_Word.Text, "False");
+                    // else dgv_WordList.Rows.Add(tb_Word.Text, "Not View");
+                    
+                    AddWordDataGird(tc_Pages.SelectedIndex, tb_Word.Text);
+                    tb_Word.Text = "";
                 }
+                */
             }
+        }
+
+        void XMLModifier()
+        {
+            XmlDocument Doc = new XmlDocument();
+            Doc.Load("Data.xml");
+
+            XmlNode FirstNode = Doc.DocumentElement;
+            XmlElement SubNode = (XmlElement)FirstNode.SelectSingleNode("Data");
+
+        }
+
+        void AddWordDataGird(int Page, string Word)
+        {/*
+            DataGridViewRow dgr = (DataGridViewRow)dgv_WordList.Rows[0].Clone();
+            dgr.Cells[0].Value = Word;
+            
+            switch (Page)
+            {
+                case 0:
+                    dgr.Cells[1].Value = "False";
+                    SaveAnalysisList.Add(dgr);
+                    break;
+                    
+                case 1:
+                    dgr.Cells[1].Value = "Not View";
+                    SaveGraphList.Add(dgr);
+                    break;
+                    
+            }*/
         }
 
         /// <summary>
@@ -404,6 +466,7 @@ namespace 텍스트분석기
         {
             if (Line.Length > 0)
             {
+                /*
                 foreach (DataGridViewRow Row in dgv_WordList.Rows)
                 {
                     if (Row.Cells[0].Value != null)
@@ -420,7 +483,7 @@ namespace 텍스트분석기
                         if (Row.Cells[1].Value.ToString() != true.ToString()) Row.Cells[1].Value = true.ToString();
                     }
                 }
-
+                */
                 return Line;
             }
             else return "";
@@ -483,6 +546,8 @@ namespace 텍스트분석기
                     }
                     lbl_AllWordsCount.Text = "전체 단어 수 : " + WordsList.Count.ToString();
                     lbl_AllSentencesCount.Text = "전체 문장 수 : " + Sentences.Count;
+
+                    WordListUpdate();
                 }
             }
         }
@@ -559,7 +624,7 @@ namespace 텍스트분석기
             {
                 using (OpenFileDialog ofd = new OpenFileDialog())
                 {
-                    ofd.Filter = "텍스트 데이터|*.txt|탭 분리 데이터|*.tsv";
+                    ofd.Filter = "텍스트 데이터|*.txt|탭 분리 데이터|*.tsv|쉼표 분리 데이터|*.csv";
                     DialogResult dr = ofd.ShowDialog();
                     if (dr == DialogResult.OK)
                     {
@@ -662,12 +727,12 @@ namespace 텍스트분석기
         }
 
         Dictionary<string, int> ExistWord = new Dictionary<string, int>();
+        LabelledVector[] LV;
+        Umap umap;
         Bitmap Create_UMAP(string FilePath)
         {
             try
             {
-                LabelledVector[] LV;
-
                 int DataP = 0, S = 0, W = File.ReadAllLines(FilePath).Length;
 
                 if (SaveDataCount > 0) LV = new LabelledVector[SaveDataCount];
@@ -679,17 +744,34 @@ namespace 텍스트분석기
 
                 // 메세지 팩 데이터 불러오기
                 var data = MessagePackSerializer.Deserialize<LabelledVector[]>(File.ReadAllBytes(MessagePackPath));
-                data = data.Take(10_0000).ToArray();
+                data = data.Take(10_000).ToArray();
 
                 using (StreamReader sr = new StreamReader(FilePath))
                 {
                     while (!sr.EndOfStream)
                     {
-                        string[] Text = sr.ReadLine().Split('\t');
-                        S = Text.Length - 1;
-                        
+                        string Line = sr.ReadLine();
+                        string[] Text;
+                        if (Line.Contains('\t'))
+                        {
+                            Text = Line.Split('\t');
+                            S = Text.Length - 1;
+                        }
+                        else if (Line.Contains(','))
+                        {
+                            Text = Line.Split(',');
+                            S = Text.Length - 1;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Data Anomaly!!");
+                            return null;
+                        }
+                       
                         if (Text[0] != null && Text[0] != "")
                         {
+                            if (!WordsList.ContainsKey(Text[0])) WordsList.Add(Text[0], 1);
+
                             float[] Values = new float[S];
 
                             for (int CurrentCell = 1; CurrentCell < S; CurrentCell++)
@@ -710,18 +792,21 @@ namespace 텍스트분석기
                             catch { MessageBox.Show(DataP.ToString() + "번 째 데이터가 이상합니다!"); }
                         }
                     }
+
+                    WordListUpdate();
                 }
 
                 Update_Text(lbl_AllSentencesCount, "All of Sentences Count : " + (S-1));
                 Update_Text(lbl_AllWordsCount, "All of Words Count : " + W);
 
                 var timer = Stopwatch.StartNew();
-                var umap = new Umap(distance: Umap.DistanceFunctions.CosineForNormalizedVectors);
+                umap = new Umap(distance: Umap.DistanceFunctions.Cosine, numberOfNeighbors: 200, customNumberOfEpochs: 100);
+                Update_Text(lbl_ReadingStatus, "Start Fit...");
                 var nEpochs = umap.InitializeFit(LV.Select(entry => entry.Vector).ToArray());
 
                 Update_Visible(pb_ReadFile, false);
                 Update_Visible(pb_UMAP, true);
-                Update_Text(lbl_ReadingStatus, "Train...");
+                Update_Text(lbl_ReadingStatus, "Start Train...");
                 for (var i = 0; i < nEpochs; i++)
                 {
                     umap.Step();
@@ -750,6 +835,8 @@ namespace 텍스트분석기
                 var scaledEmbeddings = embeddings
                     .Select(vector => new { X = (vector.X - minX) / rangeX, Y = (vector.Y - minY) / rangeY })
                     .ToArray();
+
+
 
                 var bitmap = new Bitmap(bitwidth, bitheight);
 
@@ -783,6 +870,25 @@ namespace 텍스트분석기
             }
         }
 
+        void WordListUpdate()
+        {
+            foreach (var Word in WordsList)
+            {
+                /*
+                if (dgv_WordList.InvokeRequired)
+                {
+                    dgv_WordList.Invoke(new Action(delegate {
+                        dgv_WordList.Rows.Add(Word.Key, "Not View");
+                    }));
+                }
+                else
+                {
+                    dgv_WordList.Rows.Add(Word.Key, "Not View");
+                }
+                */
+            }
+        }
+
         /// <summary>
         /// 백분율 구하기
         /// </summary>
@@ -794,8 +900,8 @@ namespace 텍스트분석기
             int result = 0;
             if (Value > Max)
             {
-                MessageBox.Show("Exception!!\nValue don\'t not bigger than Max!");
-                return result;
+                MessageBox.Show("Exception!!\nValue don\'t not bigger than Max!" + $"\n{Max} : {Value}");
+                return 100;
             }
 
             else
@@ -974,11 +1080,6 @@ namespace 텍스트분석기
         }
 
         /// <summary>
-        /// 이전 데이터
-        /// </summary>
-        List<DataGridViewRow> ForeDataGrid = new List<DataGridViewRow>();
-
-        /// <summary>
         /// 페이지 변경 시 이벤트 처리
         /// </summary>
         /// <param name="sender"></param>
@@ -989,59 +1090,156 @@ namespace 텍스트분석기
             {
                 lbl_StatusWords.Text = "Remove Words";
                 gb_WordsData.Text = "Words to be removed";
+                InsertData(SaveAnalysisList);
             }
             else if(tc_Pages.SelectedIndex == 1)
             {
                 lbl_StatusWords.Text = "Display Words";
                 gb_WordsData.Text = "Words to be Displayed";
-            }
+                InsertData(SaveGraphList);
+          }
+        }
 
-            // 데이터가 있을 때
-            if(dgv_WordList.Rows.Count > 0)
+        void InsertData(List<DataGridViewRow> data)
+        {
+            /*
+            dgv_WordList.Rows.Clear();
+            foreach(DataGridViewRow Row in data)
             {
-                // 이전 데이터가 있을 때
-                if(ForeDataGrid.Count > 0)
-                {
-                    List<DataGridViewRow> TempDataGrid = new List<DataGridViewRow>();
-                    foreach (DataGridViewRow Row in dgv_WordList.Rows)
-                    {
-                        TempDataGrid.Add(Row);
-                    }
-                    dgv_WordList.Rows.Clear();
-                    foreach(DataGridViewRow Row in ForeDataGrid)
-                    {
-                        dgv_WordList.Rows.Add(Row);
-                    }
-                    ForeDataGrid.Clear();
-                    ForeDataGrid = TempDataGrid;
-                }
-                // 이전 데이터가 없을 때
-                else
-                {
-                    foreach(DataGridViewRow Row in dgv_WordList.Rows)
-                    {
-                        ForeDataGrid.Add(Row);
-                    }
-                    dgv_WordList.Rows.Clear();
-                }
+                dgv_WordList.Rows.Add(Row);
             }
-            // 데이터가 없을 때
+            */
+        }
+
+        private void dgv_WordList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            /*
+            if(tc_Pages.SelectedIndex == 1 && e.ColumnIndex == 1)
+            {
+                if (dgv_WordList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "Not View")
+                {
+                    dgv_WordList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "View";
+                }
+                else dgv_WordList.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "Not View";
+            }
+            */
+        }
+
+        void UmapUpdate(Bitmap bitmap)
+        {
+            if(pb_UMAPImage.InvokeRequired)
+            {
+               pb_UMAPImage.Invoke(new Action(delegate
+               {
+                   pb_UMAPImage.BackgroundImage = bitmap;
+               }));
+            }
             else
             {
-                // 이전 데이터가 있을 때
-                if(ForeDataGrid.Count > 0)
+                pb_UMAPImage.BackgroundImage = bitmap;
+            }
+        }
+
+        private void rb_AllWords_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_AllWords.Checked)
+            {
+                var embeddings = umap.GetEmbedding()
+                       .Select(vector => new { X = vector[0], Y = vector[1] })
+                       .ToArray();
+
+                var minX = embeddings.Min(vector => vector.X);
+                var rangeX = embeddings.Max(vector => vector.X) - minX;
+
+                var minY = embeddings.Min(vector => vector.Y);
+                var rangeY = embeddings.Max(vector => vector.Y) - minY;
+
+                var scaledEmbeddings = embeddings
+                    .Select(vector => new { X = (vector.X - minX) / rangeX, Y = (vector.Y - minY) / rangeY })
+                    .ToArray();
+
+
+
+                var bitmap = new Bitmap(bitwidth, bitheight);
+
+                using (var g = Graphics.FromImage(bitmap))
                 {
-                    foreach (var Row in ForeDataGrid)
+                    g.FillRectangle(Brushes.DarkBlue, 0, 0, bitwidth, bitheight);
+                    g.SmoothingMode = SmoothingMode.HighQuality;
+                    g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                    using (var font = new Font("Tahoma", 8))
                     {
-                        dgv_WordList.Rows.Add(Row);
+                        int Count = 0;
+                        foreach (var (vector, uid) in scaledEmbeddings.Zip(LV, (vector, entry) => (vector, entry.UID)).OrderByDescending(x => x.UID))
+                        {
+                            g.DrawString(uid, font, Brushes.White, vector.X * bitwidth, vector.Y * bitheight);
+                            Count++;
+                        }
                     }
-                    ForeDataGrid.Clear();
+                }
+
+                UmapUpdate(bitmap);
+            }
+        }
+
+        private void rb_SelectedWords_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_SelectedWords.Checked)
+            {
+                var embeddings = umap.GetEmbedding()
+                     .Select(vector => new { X = vector[0], Y = vector[1] })
+                     .ToArray();
+
+                var minX = embeddings.Min(vector => vector.X);
+                var rangeX = embeddings.Max(vector => vector.X) - minX;
+
+                var minY = embeddings.Min(vector => vector.Y);
+                var rangeY = embeddings.Max(vector => vector.Y) - minY;
+
+                var scaledEmbeddings = embeddings
+                    .Select(vector => new { X = (vector.X - minX) / rangeX, Y = (vector.Y - minY) / rangeY })
+                    .ToArray();
+
+
+
+                var bitmap = new Bitmap(bitwidth, bitheight);
+
+                using (var g = Graphics.FromImage(bitmap))
+                {
+                    g.FillRectangle(Brushes.DarkBlue, 0, 0, bitwidth, bitheight);
+                    g.SmoothingMode = SmoothingMode.HighQuality;
+                    g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+                    g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                    using (var font = new Font("Tahoma", 8))
+                    {
+                        /*
+                        foreach (var (vector, uid) in scaledEmbeddings.Zip(LV, (vector, entry) => (vector, entry.UID)).OrderByDescending(x => x.UID))
+                        {
+                            for (int i = 0; i < dgv_WordList.Rows.Count; i++)
+                            {
+                                if (dgv_WordList.Rows[i].Cells[1].Value.ToString() == "View" && dgv_WordList.Rows[i].Cells[0].Value.ToString() == uid)
+                                {
+                                    g.DrawString(uid, font, Brushes.White, vector.X * bitwidth, vector.Y * bitheight);
+                                }
+                            }
+                        }*/
+                    }
+
+                    UmapUpdate(bitmap);
                 }
             }
         }
 
-        private void sc_Umap_Panel1_Resize(object sender, EventArgs e)
+        
+        private void AnalysisForm_Load(object sender, EventArgs e)
         {
+            RemoveWordsList.Dock = DockStyle.Fill;
+            this.gb_WordsData.Controls.Add(RemoveWordsList);
         }
     }
 

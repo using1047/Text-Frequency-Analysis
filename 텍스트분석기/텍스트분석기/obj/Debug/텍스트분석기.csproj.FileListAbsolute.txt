@@ -40,3 +40,9 @@ D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bi
 D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\MNIST-LabelledVectorArray-60000x100.msgpack
 D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\Waiting.jpg
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\ComponentFactory.Krypton.Toolkit.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.dll
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.RemoveWordsList.resources
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\obj\Debug\텍스트분석기.ViewWordsList.resources
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\Data\RemoveWordsListData.xml
+D:\CommonSource\Text-Frequency-Analysis\텍스트분석기\텍스트분석기\bin\Debug\Data\ViewWordsListData.xml

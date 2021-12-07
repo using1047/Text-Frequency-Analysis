@@ -39,6 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,6 +51,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Toolkit">
+      <HintPath>dll\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid">
+      <HintPath>dll\JDHSoftware.Krypton.Toolkit.KryptonOutlookGrid.dll</HintPath>
+    </Reference>
     <Reference Include="MessagePack, Version=2.3.0.0, Culture=neutral, PublicKeyToken=b4a0369545f0a1be, processorArchitecture=MSIL">
       <HintPath>..\packages\MessagePack.2.3.85\lib\netstandard2.0\MessagePack.dll</HintPath>
     </Reference>
@@ -100,8 +107,22 @@
     <Compile Include="AnalysisMain.Designer.cs">
       <DependentUpon>AnalysisMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataGridSetupCS\DataGridSetupRemoveWords.cs" />
+    <Compile Include="DataGridSetupCS\DataGridSetupViewWords.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DataGridControls\RemoveWordsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataGridControls\RemoveWordsList.Designer.cs">
+      <DependentUpon>RemoveWordsList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataGridControls\ViewWordsList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DataGridControls\ViewWordsList.Designer.cs">
+      <DependentUpon>ViewWordsList.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AnalysisMain.resx">
       <DependentUpon>AnalysisMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -115,6 +136,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="DataGridControls\RemoveWordsList.resx">
+      <DependentUpon>RemoveWordsList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataGridControls\ViewWordsList.resx">
+      <DependentUpon>ViewWordsList.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="MNIST-LabelledVectorArray-60000x100.msgpack">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -148,9 +175,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\RemoveWordsListData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\ViewWordsListData.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Waiting.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
