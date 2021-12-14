@@ -1,0 +1,14 @@
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\bin\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.exe
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\bin\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.deps.json
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\bin\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.runtimeconfig.json
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\bin\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.runtimeconfig.dev.json
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\bin\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.dll
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\bin\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.pdb
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\obj\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.csproj.AssemblyReference.cache
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\obj\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.GeneratedMSBuildEditorConfig.editorconfig
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\obj\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.AssemblyInfoInputs.cache
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\obj\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.AssemblyInfo.cs
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\obj\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.csproj.CoreCompileInputs.cache
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\obj\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.dll
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\obj\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.pdb
+D:\CommonSource\Text-Frequency-Analysis\DocumentFrequencyAnalysis\DocumentFrequencyAnalysis\obj\Debug\netcoreapp3.1\DocumentFrequencyAnalysis.genruntimeconfig.cache
