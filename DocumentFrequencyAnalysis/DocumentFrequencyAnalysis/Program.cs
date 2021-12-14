@@ -29,10 +29,12 @@ namespace DocumentFrequencyAnalysis
                 for (int fileNum = 0; fileNum < Doc.Length; fileNum++)
                 {
                     Doc[fileNum] = new Document(fi[fileNum].FullName, RemovePath);
-                    Doc[fileNum].Print_WordsList();
+                    //Doc[fileNum].Print_SelectWordsList();
 
-                    Console.ReadKey();
+                    Console.WriteLine(Doc[fileNum].MaxLength);
+                    //Console.ReadKey();
                 }
+
             }
             catch (Exception e)
             {
