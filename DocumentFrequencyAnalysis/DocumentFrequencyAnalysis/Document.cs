@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -50,7 +51,6 @@ namespace DocumentFrequencyAnalysis
 
         /// <summary>
         /// 삭제될 단어들
-        /// </summary>
         List<string> RemoveWordsList;
 
         // ------------------------- 객체 초기화 ----------------------------------------------------------------------------------------------------------------------------------
@@ -71,18 +71,24 @@ namespace DocumentFrequencyAnalysis
         /// <param name="RemoveWordsPath">삭제할 단어들이 포함된 파일 위치</param>
         public Document(string DataFilePath, string RemoveWordsPath)
         {
-            sections = new List<Section>();
-            RemoveWordsList = new List<string>();
+            try
+            { 
+                sections = new List<Section>();
+                RemoveWordsList = new List<string>();
 
-            this.DataFilePath = DataFilePath;
-            this.RemoveWordsPath = RemoveWordsPath;
-            // 4 : .txt 를 뜻함
-            this.DocumentName = ExtractionFileName(DataFilePath);
+                this.DataFilePath = DataFilePath;
+                this.RemoveWordsPath = RemoveWordsPath;
+                // 4 : .txt 를 뜻함
+                this.DocumentName = ExtractionFileName(DataFilePath);
 
-            // 기본 설정이 되어있으므로, 바로 읽어서 변수 할당
-            Read();
-
-            ExtractionWord();
+                // 기본 설정이 되어있으므로, 바로 읽어서 변수 할당
+                Read();
+                ExtractionWord();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
         }
 
         // ------------------------- 객체 함수 -------------------------------------------------------------------------------------------------------------------------------------
@@ -96,10 +102,9 @@ namespace DocumentFrequencyAnalysis
             try
             {
                 ReadRemoveWords();
-
                 // 디버그 콘솔 문구
-                Debug.WriteLine(DocumentName +"의 타이틀 출력 상태 : " + ExtractionTitle());
-                Debug.WriteLine(DocumentName + "의 콘텐츠 출력 상태 : " + ExtractionContent());
+                ExtractionTitle();
+                ExtractionContent();
                 RemoveMainTitle();
                 return true;
             }
@@ -127,6 +132,100 @@ namespace DocumentFrequencyAnalysis
                 return false;
             }
         }
+
+        /// <summary>
+        /// 섹션 객체를 복사해서 넘겨준다.
+        /// </summary>
+        /// <param name="Sel">섹션 번호</param>
+        /// <returns></returns>
+        public Section SectionInfo(int Sel)
+        {
+            Section TempSection = sections[Sel];
+            return TempSection;
+        }
+
+        /// <summary>
+        /// 이 문서에 포함되어 있는 섹션명만 구하는 함수
+        /// </summary>
+        /// <returns>섹션명들</returns>
+        public List<string> GetAllSectionsNames()
+        {
+            try
+            {
+                List<string> Names = new List<string>();
+
+                for (int i = 0; i < sections.Count; i++)
+                {
+                    sections[i].StrTitle = ExtractionStrTitle(sections[i].Title);
+                    Names.Add(sections[i].StrTitle);
+                }
+                return Names;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// 섹션명을 갖고 리스트에서 찾아주는 함수
+        /// </summary>
+        /// <param name="SectionName">찾을 섹션명</param>
+        /// <returns>처리결과, 섹션 번호</returns>
+        public (bool, int) FindSection(string SectionName)
+        {
+            int p = 0;
+            foreach(var section in sections)
+            {
+                if (section.StrTitle == SectionName) return (true, p);
+                else p++;
+            }
+
+            return (false, 0);
+        }
+
+        /// <summary>
+        /// 선택한 섹션의 단어목록
+        /// </summary>
+        /// <param name="Sel">섹션 번호</param>
+        /// <returns>단어 목록</returns>
+        public List<string> SelectedSectionWordList(int Sel)
+        {
+            return sections[Sel].WordsList;
+        }
+
+        public int WordCount(string sectionName, string Word)
+        {
+            (bool, int) section = FindSection(sectionName);
+
+            if (section.Item1)
+            {
+                if (sections[section.Item2].WordsList.Contains(Word))
+                {
+                    var List = sections[section.Item2].WordsList
+                                  .GroupBy(x => x)
+                                  .Select(y => y.Key)
+                                  .ToList();
+
+                    int number = List.IndexOf(Word);
+
+                    return List[number].Count();
+                }
+                else return 0;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public string NDocumentName()
+        {
+            return DocumentName;
+        }
+
+        // ------------------------- 출력 함수 -------------------------------------------------------------------------------------------------------------------------------------
 
         /// <summary>
         /// 출력할 타이틀의 섹션 선택하기
@@ -378,27 +477,23 @@ namespace DocumentFrequencyAnalysis
                                         if (IsLastWord(Word))
                                         {
                                             string word = Word.Replace(".", "");
+
+                                            // 임시
+                                            section.WordsList.Add(word.ToLower());
+                                            
                                             if (!section.WordsList.Contains(word.ToLower()))
                                             {
-                                                section.FrequencyList.Add(word.ToLower(), 1);
-                                                section.WordsList.Add(word.ToLower());
-                                            }
-                                            else
-                                            {
-                                                section.FrequencyList[word.ToLower()]++;
+                                                
                                             }
                                         }
                                         // 마침표 미포함
                                         else
                                         {
+                                            // 임시
+                                            section.WordsList.Add(Word.ToLower());
+
                                             if (!section.WordsList.Contains(Word.ToLower()))
                                             {
-                                                section.FrequencyList.Add(Word.ToLower(), 1);
-                                                section.WordsList.Add(Word.ToLower());
-                                            }
-                                            else
-                                            {
-                                                section.FrequencyList[Word.ToLower()]++;
                                             }
                                         }
                                     }
