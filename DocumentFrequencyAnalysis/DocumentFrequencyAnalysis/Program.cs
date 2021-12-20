@@ -15,11 +15,14 @@ namespace DocumentFrequencyAnalysis
         static void Main(string[] args)
         {
             try
-            { 
+            {
                 Manager.ShowAllSectionName();
 
-                Manager.ShowContainSection("First Aid");
-                Manager.ShowSelDuplicateWords("First Aid");
+                Manager.ShowContainSection("My Style");
+                //Manager.ShowSelDuplicateWords("Lower Explosive Limit (LEL)");
+
+                //Manager.ShowMoonjang("Lower Explosive Limit (LEL)");
+                Manager.Metrics("My Style");
             }
             catch (Exception e)
             {

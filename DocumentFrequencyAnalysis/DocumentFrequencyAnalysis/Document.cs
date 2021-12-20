@@ -26,7 +26,7 @@ namespace DocumentFrequencyAnalysis
         /// <summary>
         /// 이 문서에 포함되어 있는 섹션들
         /// </summary>
-        List<Section> sections;
+        public List<Section> sections;
 
         /// <summary>
         /// 타이틀이 포함되어 있는 전체 문장 패턴
@@ -48,6 +48,12 @@ namespace DocumentFrequencyAnalysis
         /// 마침표가 포함된 숫자가 들어있는 단어를 추출하는 패턴
         /// </summary>
         Regex ExtractionFloat = new Regex("[^0-9][.][0-9]");
+        /// <summary>
+        /// 문장의 끝을 판별하기 위한 패턴
+        /// </summary>
+        Regex EndMoonJang = new Regex("[.\\s\\n]");
+        Regex ExtractionDate = new Regex(@"\d{4}-\d{2}-\d{2}");
+        Regex ExtractionUnKnownNumber = new Regex("[0-9][-][0-9]");
 
         /// <summary>
         /// 삭제될 단어들
@@ -193,31 +199,6 @@ namespace DocumentFrequencyAnalysis
         public List<string> SelectedSectionWordList(int Sel)
         {
             return sections[Sel].WordsList;
-        }
-
-        public int WordCount(string sectionName, string Word)
-        {
-            (bool, int) section = FindSection(sectionName);
-
-            if (section.Item1)
-            {
-                if (sections[section.Item2].WordsList.Contains(Word))
-                {
-                    var List = sections[section.Item2].WordsList
-                                  .GroupBy(x => x)
-                                  .Select(y => y.Key)
-                                  .ToList();
-
-                    int number = List.IndexOf(Word);
-
-                    return List[number].Count();
-                }
-                else return 0;
-            }
-            else
-            {
-                return 0;
-            }
         }
 
         public string NDocumentName()
@@ -433,8 +414,8 @@ namespace DocumentFrequencyAnalysis
                         int Section_EndIndex = AllText.IndexOf(sections[Index + 1].Title);
                         int Length = Section_EndIndex - Section_StartIndex;
 
-                        string RefinedStr = RemoveSpecialWords(AllText.Substring(Section_StartIndex, Length));
-                        sections[Index].Content = RefinedStr;
+                        //string RefinedStr = RemoveSpecialWords(AllText.Substring(Section_StartIndex, Length));
+                        sections[Index].Content = AllText.Substring(Section_StartIndex, Length);
                     }
                 }
                 return true;
@@ -456,49 +437,17 @@ namespace DocumentFrequencyAnalysis
                 int S = 0;
                 foreach (var section in sections)
                 {
-                    string Content = section.Content;
+                    string Content = RemoveSpecialWords(section.Content);
 
                     // 띄어쓰기 기준으로 단어 분리
                     string[] Words = Content.Split(' ');
 
                     foreach (var Word in Words)
                     {
-                        if (!IsRemoveWord(Word))
-                        {// 두 글자 이상이여야함
-                            if (Word.Length > 2)
-                            {
-                                // 공백이 아니고
-                                if (!IsWhiteWord(Word))
-                                {
-                                    // 숫자가 아니고
-                                    if (!IsNumber(Word))
-                                    {
-                                        // 마침표 포함
-                                        if (IsLastWord(Word))
-                                        {
-                                            string word = Word.Replace(".", "");
-
-                                            // 임시
-                                            section.WordsList.Add(word.ToLower());
-                                            
-                                            if (!section.WordsList.Contains(word.ToLower()))
-                                            {
-                                                
-                                            }
-                                        }
-                                        // 마침표 미포함
-                                        else
-                                        {
-                                            // 임시
-                                            section.WordsList.Add(Word.ToLower());
-
-                                            if (!section.WordsList.Contains(Word.ToLower()))
-                                            {
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                        if ((!IsRemoveWord(Word)) && (!IsWhiteWord(Word)) && (!IsNumber(Word)) && (Word.Length > 3) && (!ExtractionDate.IsMatch(Word)) && (!ExtractionUnKnownNumber.IsMatch(Word)))
+                        {
+                            string word = Word.ToLower().Replace(".", "");
+                            section.WordsList.Add(word);
                         }
                     }
                     S++;
@@ -647,6 +596,21 @@ namespace DocumentFrequencyAnalysis
                     section.Content = section.Content.Substring(0, EndSectionIndex);
                 }
             }
+        }
+
+        public List<string> ContentINMoonJang(int SectionNumber)
+        {
+            string Content = sections[SectionNumber].Content;
+            List<string> Moonjang = new List<string>();
+
+            string[] SplitEnter = Content.Split("\r\n");
+
+            foreach(var text in SplitEnter)
+            {
+                Moonjang.AddRange(text.Split(". "));
+            }
+
+            return Moonjang;
         }
     }
 }

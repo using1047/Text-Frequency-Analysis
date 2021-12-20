@@ -614,6 +614,7 @@
             this.tc_Pages.SelectedIndex = 0;
             this.tc_Pages.Size = new System.Drawing.Size(959, 494);
             this.tc_Pages.TabIndex = 21;
+            this.tc_Pages.TabIndexChanged += new System.EventHandler(this.tc_Pages_SelectedIndexChanged);
             // 
             // tp_1
             // 
